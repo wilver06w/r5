@@ -7,6 +7,14 @@ abstract class TaskEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class ValidateTaskDataEvent extends TaskEvent {
+  const ValidateTaskDataEvent({
+    required this.task,
+  });
+
+  final Task task;
+}
+
 class ChangeDateEvent extends TaskEvent {
   const ChangeDateEvent({
     required this.date,

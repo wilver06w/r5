@@ -21,21 +21,29 @@ import 'package:r5/app/widget/checkbox.dart';
 
 part 'package:r5/app/screen/task/_sections/body.dart';
 part 'package:r5/app/screen/task/_sections/bottom.dart';
+part 'package:r5/app/screen/task/_sections/input_description.dart';
+part 'package:r5/app/screen/task/_sections/form_task.dart';
+part 'package:r5/app/screen/task/_sections/button_task.dart';
 
 class Page extends StatelessWidget {
   const Page({
     super.key,
-    this.task,
+    required this.task,
   });
 
-  final Task? task;
+  final Task task;
+
   @override
   Widget build(BuildContext context) {
     final app = Modular.get<AppConfig>();
     return BlocProvider<BlocTask>(
       create: (context) => BlocTask(
         firebaseInstace: Modular.get<R5FirebaseInstance>(),
-      )..add(
+      )
+        ..add(ValidateTaskDataEvent(
+          task: task,
+        ))
+        ..add(
           ChangeDateEvent(
             date: DateTime.now(),
           ),
@@ -75,120 +83,6 @@ Future<void> _listener(BuildContext context, TaskState state) async {
       backgroundColor: VerifikColors.rybBlue,
       textStyle: const TextStyle(
         color: Colors.white,
-      ),
-    );
-  }
-}
-
-class FormTask extends StatelessWidget {
-  const FormTask({
-    super.key,
-    required this.formKey,
-  });
-
-  final GlobalKey<FormState> formKey;
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          XigoTextField(
-            controller: null,
-            hintText: R5UiValues.title,
-            fillColor: Colors.white,
-            filled: true,
-            validator: (value) {
-              if ((value ?? '').isEmpty) {
-                return '${R5UiValues.title} ${R5UiValues.onRequired}';
-              }
-              return null;
-            },
-            textInputFormatters: [
-              FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
-            ],
-            onChanged: (value) {
-              context.read<BlocTask>().add(
-                    ChangeTitleEvent(
-                      title: value,
-                    ),
-                  );
-            },
-          ),
-          const Gap(VerifikSpacing.md),
-          BlocBuilder<BlocTask, TaskState>(
-            builder: (context, state) {
-              return VerifikText.small(
-                label:
-                    '${Functions.textMothDay(moth: state.model.date?.month ?? 1, day: state.model.date?.day ?? 1)} ${state.model.date?.hour}:${state.model.date?.minute} | ${state.model.charactersDescription} ${R5UiValues.characters}',
-                textStyle: GoogleFonts.lato(),
-              );
-            },
-          ),
-          const Gap(VerifikSpacing.md),
-          XigoTextArea(
-            controller: null,
-            hintText: R5UiValues.description,
-            fillColor: Colors.white,
-            isFilled: true,
-            validator: (value) {
-              if ((value ?? '').isEmpty) {
-                return '${R5UiValues.description} ${R5UiValues.onRequired}';
-              }
-              return null;
-            },
-            onChanged: (value) {
-              context.read<BlocTask>().add(
-                    ChangeDescriptionEvent(
-                      description: value,
-                    ),
-                  );
-            },
-            textCapitalization: TextCapitalization.none,
-          ),
-          const Gap(VerifikSpacing.md),
-          Row(
-            children: [
-              BlocSelector<BlocTask, TaskState, bool>(
-                selector: (state) {
-                  return state.model.isCompleted;
-                },
-                builder: (context, state) {
-                  return R5Checkbox(
-                    value: state,
-                    onChanged: (value) {
-                      context.read<BlocTask>().add(
-                            ChangeCompletedEvent(
-                              complete: value ?? false,
-                            ),
-                          );
-                    },
-                  );
-                },
-              ),
-              const Gap(VerifikSpacing.md),
-              BlocBuilder<BlocTask, TaskState>(
-                builder: (context, state) {
-                  return InkWell(
-                    onTap: () {
-                      context.read<BlocTask>().add(
-                            ChangeCompletedEvent(
-                              complete: !state.model.isCompleted,
-                            ),
-                          );
-                    },
-                    child: VerifikText.body(
-                      label: R5UiValues.completed,
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-          const Gap(VerifikSpacing.md),
-        ],
       ),
     );
   }

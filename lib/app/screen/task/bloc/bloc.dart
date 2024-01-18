@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r5/app/models/task.dart';
 import 'package:r5/app/utils/config/firebase_instance.dart';
 import 'package:r5/app/utils/r5_ui.dart';
 
@@ -13,6 +14,7 @@ class BlocTask extends Bloc<TaskEvent, TaskState> {
     required this.firebaseInstace,
   }) : super(const InitialState(Model())) {
     on<ChangeDateEvent>(_onChangeDateEvent);
+    on<ValidateTaskDataEvent>(_onValidateTaskDataEvent);
     on<ChangeCompletedEvent>(_onChangeCompletedEvent);
     on<ChangeDescriptionEvent>(_onChangeDescriptionEvent);
     on<ChangeTitleEvent>(_onChangeTitleEvent);
@@ -54,6 +56,22 @@ class BlocTask extends Bloc<TaskEvent, TaskState> {
         ),
       );
     }
+  }
+
+  void _onValidateTaskDataEvent(
+    ValidateTaskDataEvent event,
+    Emitter<TaskState> emit,
+  ) {
+    emit(
+      ChangedValidateTaskDateState(
+        state.model.copyWith(
+          id: event.task.id,
+          title: event.task.title,
+          description: event.task.description,
+          isCompleted: event.task.completed,
+        ),
+      ),
+    );
   }
 
   void _onChangeDateEvent(

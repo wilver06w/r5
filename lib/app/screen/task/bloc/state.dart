@@ -16,6 +16,10 @@ class ChangedDateState extends TaskState {
   const ChangedDateState(Model model) : super(model);
 }
 
+class ChangedValidateTaskDateState extends TaskState {
+  const ChangedValidateTaskDateState(Model model) : super(model);
+}
+
 class ChangedCompleteState extends TaskState {
   const ChangedCompleteState(Model model) : super(model);
 }
@@ -47,6 +51,7 @@ class ErrorSaveTaskState extends TaskState {
 
 class Model extends Equatable {
   const Model({
+    this.id = '',
     this.date,
     this.isCompleted = false,
     this.description = '',
@@ -57,20 +62,25 @@ class Model extends Equatable {
   final bool isCompleted;
   final String description;
   final String title;
+  final String id;
 
   bool get isFormFilledTask =>
       (date != null) && (description.isNotEmpty) && (title.isNotEmpty);
 
   int get charactersDescription => description.length;
 
+  bool get isEdit => id.isNotEmpty;
+
   Model copyWith({
     DateTime? date,
     bool? isCompleted,
+    String? id,
     String? description,
     String? title,
   }) {
     return Model(
       date: date ?? this.date,
+      id: id ?? this.id,
       isCompleted: isCompleted ?? this.isCompleted,
       description: description ?? this.description,
       title: title ?? this.title,
@@ -81,6 +91,7 @@ class Model extends Equatable {
   List<Object?> get props {
     return [
       date,
+      id,
       isCompleted,
       description,
       title,

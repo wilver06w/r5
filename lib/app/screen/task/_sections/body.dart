@@ -26,10 +26,16 @@ class Body extends StatelessWidget {
                   color: Colors.black,
                 ),
               ),
-              VerifikText.body(
-                label: R5UiValues.newTask,
-                color: Colors.black,
-                textStyle: GoogleFonts.lato(),
+              BlocBuilder<BlocTask, TaskState>(
+                builder: (context, state) {
+                  return VerifikText.body(
+                    label: state.model.isEdit
+                        ? R5UiValues.editTask
+                        : R5UiValues.newTask,
+                    color: Colors.black,
+                    textStyle: GoogleFonts.lato(),
+                  );
+                },
               ),
               const SizedBox.shrink(),
             ],
@@ -42,33 +48,7 @@ class Body extends StatelessWidget {
             formKey: formKeyTask,
           ),
         ),
-        BlocBuilder<BlocTask, TaskState>(
-          builder: (context, state) {
-            bool isFormValidate = state.model.isFormFilledTask;
-            return Button(
-              title: R5UiValues.save,
-              backgroundColor: VerifikColors.primaryColor,
-              onPressed: isFormValidate
-                  ? () {
-                      final formState = formKeyTask.currentState;
-
-                      if (isFormValidate && (formState?.validate() ?? true)) {
-                        context.read<BlocTask>().add(SaveTaskEvent());
-                      } else {
-                        showToast(
-                          R5UiValues.completeTheData,
-                          backgroundColor: VerifikColors.rybBlue,
-                          textStyle: const TextStyle(
-                            color: Colors.white,
-                          ),
-                        );
-                        return;
-                      }
-                    }
-                  : null,
-            );
-          },
-        ),
+        ButtonTask(formKeyTask: formKeyTask),
       ],
     );
   }

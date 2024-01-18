@@ -27,11 +27,10 @@ class Body extends StatelessWidget {
       toFirestore: (task, _) => task.toJson(),
     );
 
-    return Column(
+    return ListView(
       children: [
         const Gap(VerifikSpacing.md),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: VerifikSpacing.md),
+        Center(
           child: VerifikText.title(
             label: R5UiValues.todoListApp,
             color: Colors.black,
@@ -39,30 +38,73 @@ class Body extends StatelessWidget {
           ),
         ),
         const Gap(VerifikSpacing.md),
+        BuilderList(
+          refBd: refBd,
+          isCompleted: true,
+        ),
+        const Gap(VerifikSpacing.md),
+        BuilderList(
+          refBd: refBd,
+        ),
+      ],
+    );
+  }
+}
+
+class BuilderList extends StatelessWidget {
+  const BuilderList({
+    super.key,
+    required this.refBd,
+    this.isCompleted = false,
+  });
+
+  final CollectionReference<Task> refBd;
+  final bool isCompleted;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: VerifikSpacing.md),
+          child: VerifikText.title(
+            label: isCompleted ? R5UiValues.completed : R5UiValues.inProgress,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            textStyle: GoogleFonts.lato(),
+          ),
+        ),
+        const Gap(VerifikSpacing.xs),
         StreamBuilder(
-            stream: refBd.snapshots(),
-            builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                return Text('Error: ${snapshot.error}');
-              }
+          stream: refBd.snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            }
 
-              if (!snapshot.hasData) {
-                return const CircularProgressIndicator();
-              }
+            if (!snapshot.hasData) {
+              return const CircularProgressIndicator();
+            }
 
-              final tasks =
-                  snapshot.data!.docs.map((doc) => doc.data()).toList();
+            final tasks = snapshot.data!.docs.map((doc) => doc.data()).toList();
 
-              return Column(
-                children: [
-                  ...List.generate(
-                    tasks.length,
-                    (index) {
-                      final taskItem = tasks[index];
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: VerifikSpacing.md,
-                        ),
+            return Column(
+              children: [
+                ...List.generate(
+                  tasks.length,
+                  (index) {
+                    final taskItem = tasks[index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: VerifikSpacing.md,
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          R5Route.navAddTask(
+                            task: taskItem,
+                          );
+                        },
                         child: Card(
                           elevation: 3,
                           color: Colors.white,
@@ -119,12 +161,14 @@ class Body extends StatelessWidget {
                             ),
                           ),
                         ),
-                      );
-                    },
-                  ),
-                ],
-              );
-            }),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            );
+          },
+        ),
       ],
     );
   }

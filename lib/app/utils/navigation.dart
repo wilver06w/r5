@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:r5/app/models/task.dart';
 
 class R5Route {
   static Future<Object?> navHome() async {
@@ -8,9 +9,12 @@ class R5Route {
     );
   }
 
-  static Future<Object?> navAddTask() async {
+  static Future<Object?> navAddTask({Task? task}) async {
     return Modular.to.pushNamed(
       '/task',
+      arguments: {
+        'task': task,
+      },
     );
   }
 
