@@ -30,6 +30,7 @@ class R5UiValues {
   static const String errror = 'Error';
   static const String taskCreateSuccesful = 'Tarea creada con exito';
   static const String taskEditSuccesful = 'Tarea editar con exito';
+  static const String noDataLottie = 'assets/animations/loading/no_data.json';
 
   static const String partnerWithUs = "Partner with us";
   static const String partnersUrl = "https://verifik.co/en/partners/";

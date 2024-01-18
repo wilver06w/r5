@@ -15,16 +15,6 @@ class BuilderList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: VerifikSpacing.md),
-          child: VerifikText.title(
-            label: isCompleted ? R5UiValues.completed : R5UiValues.inProgress,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            textStyle: GoogleFonts.lato(),
-          ),
-        ),
-        const Gap(VerifikSpacing.xs),
         StreamBuilder(
           stream: refBd.snapshots(),
           builder: (context, snapshot) {
@@ -35,14 +25,56 @@ class BuilderList extends StatelessWidget {
             }
 
             if (!snapshot.hasData) {
-              return const CircularProgressIndicator();
+              return const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  CircularProgressIndicator(),
+                ],
+              );
             }
 
             final tasks = snapshot.data!.docs.map((doc) => doc.data()).toList()
               ..removeWhere((element) => element.completed != isCompleted);
 
+            if (tasks.isEmpty) {
+              return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: VerifikSpacing.md),
+                      child: VerifikText.title(
+                        label: isCompleted
+                            ? R5UiValues.completed
+                            : R5UiValues.inProgress,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        textStyle: GoogleFonts.lato(),
+                      ),
+                    ),
+                    const Gap(VerifikSpacing.xs),
+                    Lottie.asset(
+                      R5UiValues.noDataLottie,
+                    ),
+                  ]);
+            }
             return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: VerifikSpacing.md),
+                  child: VerifikText.title(
+                    label: isCompleted
+                        ? R5UiValues.completed
+                        : R5UiValues.inProgress,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    textStyle: GoogleFonts.lato(),
+                  ),
+                ),
+                const Gap(VerifikSpacing.xs),
                 ...List.generate(
                   tasks.length,
                   (index) {
