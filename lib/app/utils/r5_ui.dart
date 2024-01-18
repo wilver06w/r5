@@ -20,6 +20,8 @@ class R5UiValues {
   static const String password = 'Contraseña';
   static const String userRegisterSuccesful = 'Usuario registrado correctamente.';
   static const String nowYouCanLogIn = 'Ahora puedes iniciar sesión.';
+  static const String nameTaskBd = 'user';
+  static const String nameCollection = 'task';
 
   static const String partnerWithUs = "Partner with us";
   static const String partnersUrl = "https://verifik.co/en/partners/";

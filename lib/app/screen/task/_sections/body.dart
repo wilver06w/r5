@@ -53,8 +53,7 @@ class Body extends StatelessWidget {
                       final formState = formKeyTask.currentState;
 
                       if (isFormValidate && (formState?.validate() ?? true)) {
-                        //TODO: Logic of save
-                        // context.read<bloc.Bloc>().add(bloc.SendRegisterEvent());
+                        context.read<BlocTask>().add(SaveTaskEvent());
                       } else {
                         showToast(
                           R5UiValues.completeTheData,
