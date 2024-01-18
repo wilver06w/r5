@@ -6,6 +6,13 @@ class R5Route {
       '/home',
     );
   }
+
+  static Future<Object?> navLogin() async {
+    return Modular.to.pushNamedAndRemoveUntil(
+      '/login',
+      (_) => false,
+    );
+  }
 //TODO: remover after
   // static Future<Object?> navMapsReplacement(
   //     {required ServicesPending data}) async {

@@ -1,4 +1,4 @@
-package com.example.r5
+package com.wfprogramin.r5
 
 import io.flutter.embedding.android.FlutterActivity
 

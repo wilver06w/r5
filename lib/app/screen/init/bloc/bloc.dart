@@ -35,13 +35,13 @@ class Bloc extends bloc.Bloc<Event, State> {
       // await isTokenExpired();
 
       // if (!prefs.isLogged || tokenRepository.isTokenExpired(prefs.msToken)) {
-      //   emit(
-      //     UnLoggedState(
-      //       state.model.copyWith(
-      //         key: UniqueKey(),
-      //       ),
-      //     ),
-      //   );
+      emit(
+        UnLoggedState(
+          state.model.copyWith(
+            key: UniqueKey(),
+          ),
+        ),
+      );
       //   return;
       // }
       // Client client = await repositoryCode.getClient();

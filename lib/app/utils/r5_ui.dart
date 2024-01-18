@@ -9,10 +9,13 @@ class R5UiValues {
   static const String completed = 'Completado';
   static const String date = 'Fecha';
   static const String newTask = 'Nueva tarea';
+  static const String welcome = 'Bienvenido';
   static const String of = 'de';
   static const String characters = 'caracteres';
   static const String save = 'Guardar';
   static const String completeTheData = 'Completa los datos';
+  static const String email = 'Correo Electronico';
+  static const String password = 'Contraseña';
 
   static const String partnerWithUs = "Partner with us";
   static const String partnersUrl = "https://verifik.co/en/partners/";

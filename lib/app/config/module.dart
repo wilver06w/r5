@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:r5/app/screen/init/page.dart' as init;
+import 'package:r5/app/screen/login/page.dart' as login;
 import 'package:r5/app/screen/task/page.dart' as task;
 
 class GlobalModule extends Module {
@@ -12,6 +13,11 @@ class GlobalModule extends Module {
       ChildRoute(
         Modular.initialRoute,
         child: (_, args) => const init.Page(),
+        transition: TransitionType.fadeIn,
+      ),
+      ChildRoute(
+        '/login',
+        child: (_, args) => const login.Page(),
         transition: TransitionType.fadeIn,
       ),
       ChildRoute(

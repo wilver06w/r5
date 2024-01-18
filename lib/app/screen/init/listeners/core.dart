@@ -6,8 +6,7 @@ void listener(BuildContext context, bloc.State state) {
   }
   if (state is bloc.UnLoggedState) {
     Future.delayed(const Duration(seconds: 1), () {
-      //TODO: revisar.
-      // R5Route.navNavigateAuth();
+      R5Route.navLogin();
     });
   }
 }
