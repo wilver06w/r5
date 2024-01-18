@@ -1,9 +1,16 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 class R5Route {
+  static Future<Object?> navHome() async {
+    return Modular.to.pushNamedAndRemoveUntil(
+      '/home',
+      (_) => false,
+    );
+  }
+
   static Future<Object?> navAddTask() async {
     return Modular.to.pushNamed(
-      '/home',
+      '/task',
     );
   }
 

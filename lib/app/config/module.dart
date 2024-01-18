@@ -3,6 +3,7 @@ import 'package:r5/app/screen/init/page.dart' as init;
 import 'package:r5/app/screen/login/page.dart' as login;
 import 'package:r5/app/screen/register/page.dart' as register;
 import 'package:r5/app/screen/task/page.dart' as task;
+import 'package:r5/app/screen/home/page.dart' as home;
 
 class GlobalModule extends Module {
   @override
@@ -29,6 +30,11 @@ class GlobalModule extends Module {
       ),
       ChildRoute(
         '/home',
+        child: (_, args) => const home.Page(),
+        transition: TransitionType.fadeIn,
+      ),
+      ChildRoute(
+        '/task',
         child: (_, args) => const task.Page(),
         transition: TransitionType.fadeIn,
       ),

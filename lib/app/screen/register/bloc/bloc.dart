@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:r5/app/screen/register/repository.dart';
 import 'package:r5/app/utils/config/firebase_instance.dart';
 
 part 'event.dart';
@@ -10,7 +9,6 @@ part 'state.dart';
 
 class BlocRegister extends Bloc<RegisterEvent, RegisterState> {
   BlocRegister({
-    required this.repository,
     required this.firebaseInstace,
   }) : super(const InitialState(Model())) {
     on<ChangeEmailEvent>(_onChangeEmailEvent);
@@ -18,7 +16,6 @@ class BlocRegister extends Bloc<RegisterEvent, RegisterState> {
     on<SendRegisterEvent>(_onSendRegisterEvent);
   }
   final R5FirebaseInstance firebaseInstace;
-  final Repository repository;
 
   void _onChangeEmailEvent(
     ChangeEmailEvent event,

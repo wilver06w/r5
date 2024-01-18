@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:r5/app/models/task.dart';
 import 'package:r5/app/screen/task/bloc/bloc.dart';
 import 'package:r5/app/utils/colors.dart';
 import 'package:r5/app/utils/config/client_config.dart';
@@ -15,11 +16,10 @@ import 'package:r5/app/utils/r5_loading.dart';
 import 'package:r5/app/utils/r5_ui.dart';
 import 'package:r5/app/utils/spacing.dart';
 import 'package:r5/app/utils/text/text.dart';
-import 'package:r5/app/widget/button.dart';
 import 'package:r5/app/widget/checkbox.dart';
 
-part 'package:r5/app/screen/task/_sections/body.dart';
-part 'package:r5/app/screen/task/_sections/bottom.dart';
+part 'package:r5/app/screen/home/_sections/body.dart';
+part 'package:r5/app/screen/home/_sections/bottom.dart';
 
 class Page extends StatelessWidget {
   const Page({super.key});
@@ -62,7 +62,8 @@ Future<void> _listener(BuildContext context, TaskState state) async {
       ),
       duration: const Duration(seconds: 10),
     );
-    Navigator.pop(context);
+    //TODO: redirigir atras.
+    //R5Route.navLogin();
   } else if (state is ErrorSaveTaskState) {
     Navigator.pop(context);
     showToast(

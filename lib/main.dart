@@ -7,7 +7,6 @@ import 'package:oktoast/oktoast.dart';
 import 'package:r5/app/config/app.dart';
 import 'package:r5/app/module.dart';
 import 'package:r5/app/utils/http/http_client.dart';
-import 'package:r5/app/utils/http/http_client.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

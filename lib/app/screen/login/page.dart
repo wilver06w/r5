@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:r5/app/screen/login/bloc/bloc.dart';
-import 'package:r5/app/screen/login/repository.dart';
 import 'package:r5/app/utils/colors.dart';
 import 'package:r5/app/utils/config/client_config.dart';
 import 'package:r5/app/utils/config/firebase_instance.dart';
@@ -35,9 +33,6 @@ class Page extends StatelessWidget {
     return BlocProvider<BlocLogin>(
       create: (context) => BlocLogin(
         firebaseInstace: Modular.get<R5FirebaseInstance>(),
-        repository: Repository(
-          verifikHttpClient: Modular.get<VerifikHttpClient>(),
-        ),
         prefs: Modular.get<Preferences>(),
       ),
       child: BlocListener<BlocLogin, LoginState>(
@@ -73,7 +68,7 @@ Future<void> _listener(BuildContext context, LoginState state) async {
       );
       return;
     }
-    R5Route.navAddTask();
+    R5Route.navHome();
   } else if (state is ErrorLoginState) {
     Navigator.pop(context);
     showToast(

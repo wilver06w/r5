@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:r5/app/screen/login/repository.dart';
 import 'package:r5/app/utils/config/firebase_instance.dart';
 import 'package:r5/app/utils/preferences.dart';
 
@@ -12,7 +11,6 @@ part 'state.dart';
 class BlocLogin extends Bloc<LoginEvent, LoginState> {
   BlocLogin({
     required this.prefs,
-    required this.repository,
     required this.firebaseInstace,
   }) : super(const InitialState(Model())) {
     on<ChangeEmailEvent>(_onChangeEmailEvent);
@@ -20,7 +18,6 @@ class BlocLogin extends Bloc<LoginEvent, LoginState> {
     on<SendLoginEvent>(_onSendLoginEvent);
   }
   final R5FirebaseInstance firebaseInstace;
-  final Repository repository;
   final Preferences prefs;
 
   void _onChangeEmailEvent(
