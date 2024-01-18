@@ -33,13 +33,14 @@ class Task extends Equatable {
     );
   }
 
-  factory Task.fromJson(Map<String, dynamic> json) {
+  factory Task.fromJson(
+      {required Map<String, dynamic> json, required String id}) {
     return Task(
       description: json['description'] ?? '',
       title: json['title'] ?? '',
       completed: json['completed'] ?? false,
       date: json['date'].toDate(),
-      id: json['id'] ?? '',
+      id: id,
     );
   }
 

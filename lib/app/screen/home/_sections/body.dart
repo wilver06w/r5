@@ -9,7 +9,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final r5FirebaseInstance = Modular.get<R5FirebaseInstance>();
 
-    final refBd = r5FirebaseInstance.firebaseFirestore
+    final refBdInitial = r5FirebaseInstance.firebaseFirestore
         .collection(
           R5UiValues.nameTaskBd,
         )
@@ -18,11 +18,14 @@ class Body extends StatelessWidget {
         )
         .collection(
           R5UiValues.nameCollection,
-        )
-        .withConverter<Task>(
-          fromFirestore: (snapshots, _) => Task.fromJson(snapshots.data()!),
-          toFirestore: (task, _) => task.toJson(),
         );
+    final refBd = refBdInitial.withConverter<Task>(
+      fromFirestore: (snapshots, _) => Task.fromJson(
+        json: snapshots.data()!,
+        id: snapshots.id,
+      ),
+      toFirestore: (task, _) => task.toJson(),
+    );
 
     return Column(
       children: [
