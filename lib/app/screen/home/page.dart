@@ -21,6 +21,8 @@ import 'package:r5/app/utils/text/text.dart';
 part 'package:r5/app/screen/home/_sections/body.dart';
 part 'package:r5/app/screen/home/_sections/bottom.dart';
 part 'package:r5/app/screen/home/_sections/container_time.dart';
+part 'package:r5/app/screen/home/_sections/builder_list.dart';
+part 'package:r5/app/screen/home/_sections/item_task.dart';
 
 class Page extends StatelessWidget {
   const Page({super.key});

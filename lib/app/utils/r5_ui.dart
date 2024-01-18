@@ -27,6 +27,7 @@ class R5UiValues {
   static const String deleteTaskSuccess = 'Eliminada tarea con exito';
   static const String editTask = 'Editar Tarea';
   static const String inProgress = 'En progreso';
+  static const String errror = 'Error';
 
   static const String partnerWithUs = "Partner with us";
   static const String partnersUrl = "https://verifik.co/en/partners/";

@@ -12,7 +12,7 @@ class ContainerTime extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(
-        VerifikSpacing.md,
+        VerifikSpacing.sl,
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
