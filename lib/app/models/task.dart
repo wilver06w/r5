@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
+import 'package:r5/app/utils/functions.dart';
 
 class Task extends Equatable {
   const Task({
+    required this.id,
     required this.date,
     this.title = '',
     this.description = '',
@@ -10,10 +13,12 @@ class Task extends Equatable {
 
   final DateTime date;
   final String title;
-  final String description;
   final bool completed;
+  final String description;
+  final String id;
 
   Task copyWith({
+    String? id,
     DateTime? date,
     String? title,
     String? description,
@@ -24,6 +29,7 @@ class Task extends Equatable {
       title: title ?? this.title,
       description: description ?? this.description,
       completed: completed ?? this.completed,
+      id: id ?? this.id,
     );
   }
 
@@ -32,7 +38,8 @@ class Task extends Equatable {
       description: json['description'] ?? '',
       title: json['title'] ?? '',
       completed: json['completed'] ?? false,
-      date: DateTime.parse(json["date"]),
+      date: json['date'].toDate(),
+      id: json['id'] ?? '',
     );
   }
 
@@ -41,7 +48,8 @@ class Task extends Equatable {
       'description': description,
       'title': title,
       'completed': completed,
-      "date": date.toIso8601String(),
+      "date": date,
+      "id": id,
     };
   }
 
@@ -52,6 +60,7 @@ class Task extends Equatable {
       description,
       date,
       completed,
+      id,
     ];
   }
 }

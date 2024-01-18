@@ -23,6 +23,7 @@ class Body extends StatelessWidget {
           fromFirestore: (snapshots, _) => Task.fromJson(snapshots.data()!),
           toFirestore: (task, _) => task.toJson(),
         );
+
     return Column(
       children: [
         const Gap(VerifikSpacing.md),
@@ -65,14 +66,60 @@ class Body extends StatelessWidget {
               final productos =
                   snapshot.data!.docs.map((doc) => doc.data()).toList();
 
-              // Tu widget personalizado para mostrar un producto
               return Column(
                 children: [
                   ...List.generate(
                     productos.length,
-                    (index) => Container(
-                      child: VerifikText.body(
-                        label: productos[index].title,
+                    (index) => Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: VerifikSpacing.md,
+                      ),
+                      child: Card(
+                        elevation: 3,
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(VerifikSpacing.sm),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  VerifikText.body(
+                                    label: productos[index].title,
+                                    color: Colors.black,
+                                    textStyle: GoogleFonts.lato(),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  ContainerTime(
+                                    dateTime: Functions.timeText(
+                                        initial: productos[index].date),
+                                  ),
+                                ],
+                              ),
+                              const Gap(VerifikSpacing.md),
+                              VerifikText.small(
+                                label: productos[index].description,
+                                color: Colors.black,
+                                textStyle: GoogleFonts.lato(),
+                              ),
+                              const Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Icon(
+                                    Icons.delete_outline_outlined,
+                                    color: Colors.red,
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
