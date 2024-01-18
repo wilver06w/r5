@@ -1,34 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:r5/app/screen/camera/page.dart';
-import 'package:r5/app/screen/demo/bloc/bloc.dart';
-import 'package:r5/app/screen/task/repository.dart';
-import 'package:r5/app/screen/document/page.dart';
-import 'package:r5/app/screen/result/page.dart';
-import 'package:r5/app/screen/scanning/page.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:r5/app/screen/task/bloc/bloc.dart';
-import 'package:r5/app/utils/camera/bloc/bloc.dart';
+import 'package:r5/app/screen/task/repository.dart';
 import 'package:r5/app/utils/colors.dart';
 import 'package:r5/app/utils/config/client_config.dart';
 import 'package:r5/app/utils/functions.dart';
 import 'package:r5/app/utils/http/http_client.dart' hide ModularWatchExtension;
 import 'package:r5/app/utils/input/input.dart';
-import 'package:r5/app/utils/responsive.dart';
+import 'package:r5/app/utils/r5_ui.dart';
 import 'package:r5/app/utils/spacing.dart';
 import 'package:r5/app/utils/text/text.dart';
-import 'package:r5/app/utils/verifik_ui.dart';
+import 'package:r5/app/widget/button.dart';
 import 'package:r5/app/widget/checkbox.dart';
-import 'package:r5/app/widget/item_circular.dart';
 
-part 'package:r5/app/screen/task/_sections/app_bar.dart';
-part 'package:r5/app/screen/task/_sections/body_pass.dart';
+part 'package:r5/app/screen/task/_sections/body.dart';
 part 'package:r5/app/screen/task/_sections/bottom.dart';
-part 'package:r5/app/screen/task/_sections/header_pass.dart';
-part 'package:r5/app/screen/task/_sections/item_card.dart';
-part 'package:r5/app/screen/task/_sections/options_card.dart';
 
 class Page extends StatelessWidget {
   const Page({super.key});
@@ -41,38 +31,45 @@ class Page extends StatelessWidget {
         repository: Repository(
           verifikHttpClient: Modular.get<VerifikHttpClient>(),
         ),
-      ),
+      )..add(
+          ChangeDateEvent(
+            date: DateTime.now(),
+          ),
+        ),
       child: Scaffold(
         backgroundColor: VerifikColors.backgroundColor,
-        appBar: MyAppBar(
-          imageCountryUrl: app.country.imageUrl,
-        ),
         bottomNavigationBar: BodyBottom(app: app),
-        body: const Body(),
+        body: const SafeArea(
+          child: Body(),
+        ),
       ),
     );
   }
 }
 
-class Body extends StatelessWidget {
-  const Body({
+class FormTask extends StatelessWidget {
+  const FormTask({
     super.key,
+    required this.formKey,
   });
+
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(VerifikSpacing.md),
+    return Form(
+      key: formKey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           XigoTextField(
             controller: null,
-            hintText: VerifikUiValues.title,
+            hintText: R5UiValues.title,
             fillColor: Colors.white,
             filled: true,
             validator: (value) {
               if ((value ?? '').isEmpty) {
-                return '${VerifikUiValues.title} ${VerifikUiValues.onRequired}';
+                return '${R5UiValues.title} ${R5UiValues.onRequired}';
               }
               return null;
             },
@@ -80,85 +77,84 @@ class Body extends StatelessWidget {
               FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
             ],
             onChanged: (value) {
-              // context.read<bloc.Bloc>().add(
-              //       bloc.ChangeNameEvent(
-              //         name: value,
-              //       ),
-              //     );
+              context.read<BlocTask>().add(
+                    ChangeTitleEvent(
+                      title: value,
+                    ),
+                  );
+            },
+          ),
+          const Gap(VerifikSpacing.md),
+          BlocBuilder<BlocTask, TaskState>(
+            builder: (context, state) {
+              return VerifikText.small(
+                label:
+                    '${Functions.textMothDay(moth: state.model.date?.month ?? 1, day: state.model.date?.day ?? 1)} ${state.model.date?.hour}:${state.model.date?.minute} | ${state.model.charactersDescription} ${R5UiValues.characters}',
+                textStyle: GoogleFonts.lato(),
+              );
             },
           ),
           const Gap(VerifikSpacing.md),
           XigoTextArea(
             controller: null,
-            hintText: VerifikUiValues.description,
+            hintText: R5UiValues.description,
             fillColor: Colors.white,
             isFilled: true,
             validator: (value) {
               if ((value ?? '').isEmpty) {
-                return '${VerifikUiValues.description} ${VerifikUiValues.onRequired}';
+                return '${R5UiValues.description} ${R5UiValues.onRequired}';
               }
               return null;
             },
             onChanged: (value) {
-              // context.read<bloc.Bloc>().add(
-              //       bloc.ChangeNameEvent(
-              //         name: value,
-              //       ),
-              //     );
+              context.read<BlocTask>().add(
+                    ChangeDescriptionEvent(
+                      description: value,
+                    ),
+                  );
             },
             textCapitalization: TextCapitalization.none,
           ),
           const Gap(VerifikSpacing.md),
           Row(
             children: [
-              const R5Checkbox(),
+              BlocSelector<BlocTask, TaskState, bool>(
+                selector: (state) {
+                  return state.model.isCompleted;
+                },
+                builder: (context, state) {
+                  return R5Checkbox(
+                    value: state,
+                    onChanged: (value) {
+                      context.read<BlocTask>().add(
+                            ChangeCompletedEvent(
+                              complete: value ?? false,
+                            ),
+                          );
+                    },
+                  );
+                },
+              ),
               const Gap(VerifikSpacing.md),
-              VerifikText.body(
-                label: VerifikUiValues.completed,
+              BlocBuilder<BlocTask, TaskState>(
+                builder: (context, state) {
+                  return InkWell(
+                    onTap: () {
+                      context.read<BlocTask>().add(
+                            ChangeCompletedEvent(
+                              complete: !state.model.isCompleted,
+                            ),
+                          );
+                    },
+                    child: VerifikText.body(
+                      label: R5UiValues.completed,
+                    ),
+                  );
+                },
               ),
             ],
           ),
           const Gap(VerifikSpacing.md),
-          InkWell(
-            onTap: () async {
-              final selectedDate = await showDatePicker(
-                context: context,
-                initialDate: DateTime.now(),
-                firstDate: DateTime(1996),
-                lastDate: DateTime(2030),
-              );
-
-              if (selectedDate != null) {
-                if (context.mounted) {
-                  context.read<BlocTask>().add(
-                        ChangeDateEvent(
-                          date:
-                              '${selectedDate.year}/${selectedDate.month}/${selectedDate.day}',
-                        ),
-                      );
-                }
-              }
-            },
-            child: BlocBuilder<BlocTask, TaskState>(
-              builder: (context, state) {
-                return XigoTextField(
-                  controller: TextEditingController(
-                    text: state.model.date,
-                  ),
-                  hintText: VerifikUiValues.date,
-                  fillColor: Colors.white,
-                  filled: true,
-                  enabled: false,
-                  validator: (value) {
-                    if ((value ?? '').isEmpty) {
-                      return '${VerifikUiValues.date} ${VerifikUiValues.onRequired}';
-                    }
-                    return null;
-                  },
-                );
-              },
-            ),
-          ),
         ],
       ),
     );

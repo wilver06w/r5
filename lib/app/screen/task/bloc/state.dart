@@ -12,6 +12,22 @@ class InitialState extends TaskState {
   const InitialState(Model model) : super(model);
 }
 
+class ChangedDateState extends TaskState {
+  const ChangedDateState(Model model) : super(model);
+}
+
+class ChangedCompleteState extends TaskState {
+  const ChangedCompleteState(Model model) : super(model);
+}
+
+class ChangedDescriptionState extends TaskState {
+  const ChangedDescriptionState(Model model) : super(model);
+}
+
+class ChangedTitleState extends TaskState {
+  const ChangedTitleState(Model model) : super(model);
+}
+
 class ChangedPassNumberState extends TaskState {
   const ChangedPassNumberState(Model model) : super(model);
 }
@@ -77,7 +93,10 @@ class ErrorDetailState extends TaskState {
 
 class Model extends Equatable {
   const Model({
-    this.date = '',
+    this.date,
+    this.isCompleted = true,
+    this.description = '',
+    this.title = '',
     this.numberPass = 0,
     this.documentDetails,
     this.liveness,
@@ -86,7 +105,10 @@ class Model extends Equatable {
     this.imageSelfie,
   });
 
-  final String date;
+  final DateTime? date;
+  final bool isCompleted;
+  final String description;
+  final String title;
 
   final int numberPass;
   final DocumentDetails? documentDetails;
@@ -95,8 +117,16 @@ class Model extends Equatable {
   final Uint8List? imageScanned;
   final Uint8List? imageSelfie;
 
+  bool get isFormFilledTask =>
+      (date != null) && (description.isNotEmpty) && (title.isNotEmpty);
+
+  int get charactersDescription => description.length;
+
   Model copyWith({
-    String? date,
+    DateTime? date,
+    bool? isCompleted,
+    String? description,
+    String? title,
     int? numberPass,
     Uint8List? imageScanned,
     Uint8List? imageSelfie,
@@ -106,6 +136,9 @@ class Model extends Equatable {
   }) {
     return Model(
       date: date ?? this.date,
+      isCompleted: isCompleted ?? this.isCompleted,
+      description: description ?? this.description,
+      title: title ?? this.title,
       numberPass: numberPass ?? this.numberPass,
       documentDetails: documentDetails ?? this.documentDetails,
       liveness: liveness ?? this.liveness,
@@ -119,6 +152,9 @@ class Model extends Equatable {
   List<Object?> get props {
     return [
       date,
+      isCompleted,
+      description,
+      title,
       numberPass,
       documentDetails,
       liveness,

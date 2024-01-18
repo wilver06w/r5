@@ -12,7 +12,31 @@ class ChangeDateEvent extends TaskEvent {
     required this.date,
   });
 
-  final String date;
+  final DateTime date;
+}
+
+class ChangeCompletedEvent extends TaskEvent {
+  const ChangeCompletedEvent({
+    required this.complete,
+  });
+
+  final bool complete;
+}
+
+class ChangeDescriptionEvent extends TaskEvent {
+  const ChangeDescriptionEvent({
+    required this.description,
+  });
+
+  final String description;
+}
+
+class ChangeTitleEvent extends TaskEvent {
+  const ChangeTitleEvent({
+    required this.title,
+  });
+
+  final String title;
 }
 
 class ChangePassNumberEvent extends TaskEvent {

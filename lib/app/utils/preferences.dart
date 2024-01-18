@@ -16,7 +16,7 @@ class Preferences {
   }
 
   final String _languageKey = 'country';
-  String get language => _prefs?.getString(_languageKey) ?? 'EN';
+  String get language => _prefs?.getString(_languageKey) ?? 'ES';
   set language(String value) => _prefs?.setString(_languageKey, value);
 
   Future<void> reload() async {

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:r5/app/utils/responsive.dart';
 import 'package:r5/app/utils/spacing.dart';
-import 'package:r5/app/utils/verifik_ui.dart';
+import 'package:r5/app/utils/r5_ui.dart';
 
-class VerifikLoading {
+class R5Loading {
   static void show(
     BuildContext context, {
     bool useRootNavigator = false,
@@ -17,7 +17,7 @@ class VerifikLoading {
         return PopScope(
           canPop: false,
           child: Lottie.asset(
-            VerifikUiValues.loadingAnimations,
+            R5UiValues.loadingAnimations,
             height: VerifikResponsive.heightSizeByContext(
               context,
               pixels: VerifikSpacing.xs,

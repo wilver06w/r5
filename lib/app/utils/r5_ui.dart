@@ -1,11 +1,18 @@
-class VerifikUiValues {
-  static const String textFooter = "Verifik © 2023 Product of MAT Enterprises";
+class R5UiValues {
+  static const String logor5 = 'assets/svg/logor.svg';
+  static const String textFooter =
+      "© 2024 Grupo R5 · Calle 127b Bis 49 - 38, Bogotá - Colombia";
   static const String worldSvg = 'assets/svg/world.svg';
   static const String title = 'Titulo';
   static const String onRequired = 'Es requerido.';
   static const String description = 'Descripcion';
   static const String completed = 'Completado';
   static const String date = 'Fecha';
+  static const String newTask = 'Nueva tarea';
+  static const String of = 'de';
+  static const String characters = 'caracteres';
+  static const String save = 'Guardar';
+  static const String completeTheData = 'Completa los datos';
 
   static const String partnerWithUs = "Partner with us";
   static const String partnersUrl = "https://verifik.co/en/partners/";

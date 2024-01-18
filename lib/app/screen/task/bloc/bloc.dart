@@ -18,6 +18,9 @@ class BlocTask extends Bloc<TaskEvent, TaskState> {
     required this.repository,
   }) : super(const InitialState(Model())) {
     on<ChangeDateEvent>(_onChangeDateEvent);
+    on<ChangeCompletedEvent>(_onChangeCompletedEvent);
+    on<ChangeDescriptionEvent>(_onChangeDescriptionEvent);
+    on<ChangeTitleEvent>(_onChangeTitleEvent);
     on<ChangePassNumberEvent>(_onChangePassNumberEvent);
     on<ChangeInfoDetailEvent>(_onChangeInfoDetailEvent);
     on<ChangeSelfieImagenEvent>(_onChangeSelfieImagenEvent);
@@ -59,9 +62,48 @@ class BlocTask extends Bloc<TaskEvent, TaskState> {
     Emitter<TaskState> emit,
   ) {
     emit(
-      ChangedPassNumberState(
+      ChangedDateState(
         state.model.copyWith(
           date: event.date,
+        ),
+      ),
+    );
+  }
+
+  void _onChangeCompletedEvent(
+    ChangeCompletedEvent event,
+    Emitter<TaskState> emit,
+  ) {
+    emit(
+      ChangedCompleteState(
+        state.model.copyWith(
+          isCompleted: event.complete,
+        ),
+      ),
+    );
+  }
+
+  void _onChangeDescriptionEvent(
+    ChangeDescriptionEvent event,
+    Emitter<TaskState> emit,
+  ) {
+    emit(
+      ChangedDescriptionState(
+        state.model.copyWith(
+          description: event.description,
+        ),
+      ),
+    );
+  }
+
+  void _onChangeTitleEvent(
+    ChangeTitleEvent event,
+    Emitter<TaskState> emit,
+  ) {
+    emit(
+      ChangedDescriptionState(
+        state.model.copyWith(
+          title: event.title,
         ),
       ),
     );

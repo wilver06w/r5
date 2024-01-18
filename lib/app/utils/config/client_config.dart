@@ -32,7 +32,7 @@ class AppConfig {
 
   set country(Language country) {
     Modular.get<Preferences>().language =
-        country.code.isEmpty ? 'EN' : country.code;
+        country.code.isEmpty ? 'ES' : country.code;
     _country = country;
   }
 

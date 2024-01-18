@@ -12,6 +12,9 @@ import 'package:flutter/material.dart';
 class VerifikColors {
   const VerifikColors._();
 
+  ///brightTurquoise
+  static const Color brightTurquoise = Color(0xff00ecd2);
+
   ///backgroundColor
   static const Color backgroundColor = Color(0xFFF1F5F9);
 

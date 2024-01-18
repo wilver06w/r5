@@ -5,7 +5,7 @@ import 'package:r5/app/utils/colors.dart';
 import 'package:r5/app/utils/spacing.dart';
 import 'package:r5/app/utils/text/text.dart';
 import 'package:r5/app/utils/text/typography.dart';
-import 'package:r5/app/utils/verifik_ui.dart';
+import 'package:r5/app/utils/r5_ui.dart';
 
 part 'types/check_input.dart';
 part 'types/code_input.dart';
@@ -297,7 +297,7 @@ class _TextFieldTitle extends StatelessWidget {
           ),
           if (errorText != null)
             SvgPicture.asset(
-              VerifikUiValues.worldSvg,
+              R5UiValues.worldSvg,
               colorFilter: const ColorFilter.mode(
                 VerifikColors.dangerColor,
                 BlendMode.srcIn,

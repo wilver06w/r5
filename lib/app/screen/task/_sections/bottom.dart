@@ -17,11 +17,12 @@ class BodyBottom extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            VerifikText.labelText(
-              label: VerifikUiValues.textFooter,
+            VerifikText.small(
+              label: R5UiValues.textFooter,
+              textStyle: GoogleFonts.lato(),
             ),
             VerifikText.xSmall(
-              label: '${VerifikUiValues.version} ${app.version}',
+              label: '${R5UiValues.version} ${app.version}',
             ),
           ],
         ),
