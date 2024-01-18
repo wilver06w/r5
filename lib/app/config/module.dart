@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:r5/app/models/task.dart';
 import 'package:r5/app/screen/init/page.dart' as init;
 import 'package:r5/app/screen/login/page.dart' as login;
 import 'package:r5/app/screen/register/page.dart' as register;
@@ -35,7 +36,13 @@ class GlobalModule extends Module {
       ),
       ChildRoute(
         '/task',
-        child: (_, args) => const task.Page(),
+        child: (_, args) => task.Page(
+          task: (args.data ?? {})['task'] ??
+              Task(
+                id: '',
+                date: DateTime.now(),
+              ),
+        ),
         transition: TransitionType.fadeIn,
       ),
     ];

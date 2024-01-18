@@ -36,9 +36,9 @@ class ContainerTime extends StatelessWidget {
               textOverflow: TextOverflow.ellipsis,
             ),
           ],
-          if (dateTime.minute > 0 && dateTime.minute < 60) ...[
+          if (dateTime.minute >= 0 && dateTime.minute < 60) ...[
             VerifikText.labelText(
-              label: '${dateTime.minute}m',
+              label: dateTime.minute == 0 ? '1m' : '${dateTime.minute}m',
               color: Colors.white,
               textOverflow: TextOverflow.ellipsis,
             ),

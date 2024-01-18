@@ -32,26 +32,10 @@ class Body extends StatelessWidget {
         const Gap(VerifikSpacing.md),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: VerifikSpacing.md),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              InkWell(
-                onTap: () {
-                  Modular.to.pop();
-                },
-                child: const Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                ),
-              ),
-              VerifikText.body(
-                label: R5UiValues.newTask,
-                color: Colors.black,
-                textStyle: GoogleFonts.lato(),
-              ),
-              const SizedBox.shrink(),
-            ],
+          child: VerifikText.title(
+            label: R5UiValues.todoListApp,
+            color: Colors.black,
+            textStyle: GoogleFonts.lato(),
           ),
         ),
         const Gap(VerifikSpacing.md),
@@ -66,65 +50,77 @@ class Body extends StatelessWidget {
                 return const CircularProgressIndicator();
               }
 
-              final productos =
+              final tasks =
                   snapshot.data!.docs.map((doc) => doc.data()).toList();
 
               return Column(
                 children: [
                   ...List.generate(
-                    productos.length,
-                    (index) => Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: VerifikSpacing.md,
-                      ),
-                      child: Card(
-                        elevation: 3,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                    tasks.length,
+                    (index) {
+                      final taskItem = tasks[index];
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: VerifikSpacing.md,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(VerifikSpacing.sm),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  VerifikText.body(
-                                    label: productos[index].title,
-                                    color: Colors.black,
-                                    textStyle: GoogleFonts.lato(),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  ContainerTime(
-                                    dateTime: Functions.timeText(
-                                        initial: productos[index].date),
-                                  ),
-                                ],
-                              ),
-                              const Gap(VerifikSpacing.md),
-                              VerifikText.small(
-                                label: productos[index].description,
-                                color: Colors.black,
-                                textStyle: GoogleFonts.lato(),
-                              ),
-                              const Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Icon(
-                                    Icons.delete_outline_outlined,
-                                    color: Colors.red,
-                                  ),
-                                ],
-                              )
-                            ],
+                        child: Card(
+                          elevation: 3,
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(VerifikSpacing.sm),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    VerifikText.body(
+                                      label: taskItem.title,
+                                      color: Colors.black,
+                                      textStyle: GoogleFonts.lato(),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    ContainerTime(
+                                      dateTime: Functions.timeText(
+                                          initial: taskItem.date),
+                                    ),
+                                  ],
+                                ),
+                                const Gap(VerifikSpacing.md),
+                                VerifikText.small(
+                                  label: taskItem.description,
+                                  color: Colors.black,
+                                  textStyle: GoogleFonts.lato(),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        context.read<BlocHome>().add(
+                                              DeleteItemTaskEvent(
+                                                id: taskItem.id,
+                                              ),
+                                            );
+                                      },
+                                      child: const Icon(
+                                        Icons.delete_outline_outlined,
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
                 ],
               );

@@ -1,4 +1,5 @@
 class R5UiValues {
+  static const String todoListApp = 'ToDO list App';
   static const String logor5 = 'assets/svg/logor.svg';
   static const String textFooter =
       "© 2024 Grupo R5 · Calle 127b Bis 49 - 38, Bogotá - Colombia";
@@ -18,10 +19,12 @@ class R5UiValues {
   static const String email = 'Correo Electronico';
   static const String verifyEmail = 'Verificar correo electrónico';
   static const String password = 'Contraseña';
-  static const String userRegisterSuccesful = 'Usuario registrado correctamente.';
+  static const String userRegisterSuccesful =
+      'Usuario registrado correctamente.';
   static const String nowYouCanLogIn = 'Ahora puedes iniciar sesión.';
   static const String nameTaskBd = 'user';
   static const String nameCollection = 'task';
+  static const String deleteTaskSuccess = 'Eliminada tarea con exito';
 
   static const String partnerWithUs = "Partner with us";
   static const String partnersUrl = "https://verifik.co/en/partners/";

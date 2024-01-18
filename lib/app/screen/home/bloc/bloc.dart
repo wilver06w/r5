@@ -8,26 +8,22 @@ import 'package:r5/app/utils/r5_ui.dart';
 part 'event.dart';
 part 'state.dart';
 
-class BlocTask extends Bloc<TaskEvent, TaskState> {
-  BlocTask({
+class BlocHome extends Bloc<HomeEvent, HomeState> {
+  BlocHome({
     required this.firebaseInstace,
   }) : super(const InitialState(Model())) {
-    on<ChangeDateEvent>(_onChangeDateEvent);
-    on<ChangeCompletedEvent>(_onChangeCompletedEvent);
-    on<ChangeDescriptionEvent>(_onChangeDescriptionEvent);
-    on<ChangeTitleEvent>(_onChangeTitleEvent);
-    on<SaveTaskEvent>(_onSaveTaskEvent);
+    on<DeleteItemTaskEvent>(_onDeleteItemTaskEvent);
   }
   final R5FirebaseInstance firebaseInstace;
 
-  Future<void> _onSaveTaskEvent(
-    SaveTaskEvent event,
-    Emitter<TaskState> emit,
+  Future<void> _onDeleteItemTaskEvent(
+    DeleteItemTaskEvent event,
+    Emitter<HomeState> emit,
   ) async {
     try {
-      emit(LoadingSaveTaskState(state.model));
+      emit(LoadingDeleteItemState(state.model));
 
-      final refBd = firebaseInstace.firebaseFirestore
+      firebaseInstace.firebaseFirestore
           .collection(
             R5UiValues.nameTaskBd,
           )
@@ -36,75 +32,18 @@ class BlocTask extends Bloc<TaskEvent, TaskState> {
           )
           .collection(
             R5UiValues.nameCollection,
-          );
+          )
+          .doc(event.id)
+          .delete();
 
-      refBd.add({
-        'title': state.model.title,
-        'description': state.model.description,
-        'completed': state.model.isCompleted,
-        'date': state.model.date,
-      });
-
-      emit(LoadedSaveTaskState(state.model));
+      emit(LoadedDeletedItemState(state.model));
     } on FirebaseException catch (error) {
       emit(
-        ErrorSaveTaskState(
+        ErrorDeleteItemState(
           model: state.model,
           message: error.message ?? '',
         ),
       );
     }
-  }
-
-  void _onChangeDateEvent(
-    ChangeDateEvent event,
-    Emitter<TaskState> emit,
-  ) {
-    emit(
-      ChangedDateState(
-        state.model.copyWith(
-          date: event.date,
-        ),
-      ),
-    );
-  }
-
-  void _onChangeCompletedEvent(
-    ChangeCompletedEvent event,
-    Emitter<TaskState> emit,
-  ) {
-    emit(
-      ChangedCompleteState(
-        state.model.copyWith(
-          isCompleted: event.complete,
-        ),
-      ),
-    );
-  }
-
-  void _onChangeDescriptionEvent(
-    ChangeDescriptionEvent event,
-    Emitter<TaskState> emit,
-  ) {
-    emit(
-      ChangedDescriptionState(
-        state.model.copyWith(
-          description: event.description,
-        ),
-      ),
-    );
-  }
-
-  void _onChangeTitleEvent(
-    ChangeTitleEvent event,
-    Emitter<TaskState> emit,
-  ) {
-    emit(
-      ChangedDescriptionState(
-        state.model.copyWith(
-          title: event.title,
-        ),
-      ),
-    );
   }
 }

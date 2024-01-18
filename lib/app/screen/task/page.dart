@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:r5/app/models/task.dart';
 import 'package:r5/app/screen/task/bloc/bloc.dart';
 import 'package:r5/app/utils/colors.dart';
 import 'package:r5/app/utils/config/client_config.dart';
@@ -22,8 +23,12 @@ part 'package:r5/app/screen/task/_sections/body.dart';
 part 'package:r5/app/screen/task/_sections/bottom.dart';
 
 class Page extends StatelessWidget {
-  const Page({super.key});
+  const Page({
+    super.key,
+    this.task,
+  });
 
+  final Task? task;
   @override
   Widget build(BuildContext context) {
     final app = Modular.get<AppConfig>();
