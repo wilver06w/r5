@@ -37,6 +37,13 @@
             {
               "client_id": "884347681713-rnjqbbn3ccmj05f200mro6sie0cu0s97.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "884347681713-opfu6s6cdd3frls6gvnua5vcngmfjn65.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wfprogramin.r5"
+              }
             }
           ]
         }

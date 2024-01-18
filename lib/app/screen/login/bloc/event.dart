@@ -22,3 +22,5 @@ class ChangePasswordEvent extends LoginEvent {
 
   final String password;
 }
+
+class SendLoginEvent extends LoginEvent {}

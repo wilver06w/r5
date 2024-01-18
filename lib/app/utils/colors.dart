@@ -60,6 +60,9 @@ class VerifikColors {
   ///rybBlue
   static const Color rybBlue = Color(0xFF0036e7);
 
+
+
+
   ///maximumRed
   static const Color maximumRed = Color(0xFFdc2626);
 

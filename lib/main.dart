@@ -1,13 +1,32 @@
+import 'dart:io';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:oktoast/oktoast.dart';
 import 'package:r5/app/config/app.dart';
 import 'package:r5/app/module.dart';
 import 'package:r5/app/utils/http/http_client.dart';
+import 'package:r5/app/utils/http/http_client.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isAndroid) {
+    await Firebase.initializeApp(
+      options: const FirebaseOptions(
+        apiKey:
+            'AIzaSyAkXy1at1TvzlYRqa7yPPP_nQwk0j51Ocg', //Replace with API key from google-services.json
+        appId:
+            '884347681713:android:2c522dfc6d569f21e19b90', // Replace with App ID from google-services.json`enter code here`
+        messagingSenderId:
+            '', // Replace with Messaging Sender ID from google-services.json
+        projectId:
+            'quizr5', // Replace with Project ID from google-services.json
+      ),
+    );
+  } else {
+    await Firebase.initializeApp();
+  }
 
   await App.instance.init();
 

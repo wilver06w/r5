@@ -15,6 +15,7 @@ class R5UiValues {
   static const String save = 'Guardar';
   static const String completeTheData = 'Completa los datos';
   static const String email = 'Correo Electronico';
+  static const String verifyEmail = 'Verificar correo electrónico';
   static const String password = 'Contraseña';
 
   static const String partnerWithUs = "Partner with us";
