@@ -10,6 +10,7 @@ class R5UiValues {
   static const String date = 'Fecha';
   static const String newTask = 'Nueva tarea';
   static const String welcome = 'Bienvenido';
+  static const String register = 'Registrate';
   static const String of = 'de';
   static const String characters = 'caracteres';
   static const String save = 'Guardar';
@@ -17,6 +18,8 @@ class R5UiValues {
   static const String email = 'Correo Electronico';
   static const String verifyEmail = 'Verificar correo electrónico';
   static const String password = 'Contraseña';
+  static const String userRegisterSuccesful = 'Usuario registrado correctamente.';
+  static const String nowYouCanLogIn = 'Ahora puedes iniciar sesión.';
 
   static const String partnerWithUs = "Partner with us";
   static const String partnersUrl = "https://verifik.co/en/partners/";

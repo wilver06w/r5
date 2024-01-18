@@ -2,30 +2,27 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:r5/app/screen/login/repository.dart';
+import 'package:r5/app/screen/register/repository.dart';
 import 'package:r5/app/utils/config/firebase_instance.dart';
-import 'package:r5/app/utils/preferences.dart';
 
 part 'event.dart';
 part 'state.dart';
 
-class BlocLogin extends Bloc<LoginEvent, LoginState> {
-  BlocLogin({
-    required this.prefs,
+class BlocRegister extends Bloc<RegisterEvent, RegisterState> {
+  BlocRegister({
     required this.repository,
     required this.firebaseInstace,
   }) : super(const InitialState(Model())) {
     on<ChangeEmailEvent>(_onChangeEmailEvent);
     on<ChangePasswordEvent>(_onChangePasswordEvent);
-    on<SendLoginEvent>(_onSendLoginEvent);
+    on<SendRegisterEvent>(_onSendRegisterEvent);
   }
   final R5FirebaseInstance firebaseInstace;
   final Repository repository;
-  final Preferences prefs;
 
   void _onChangeEmailEvent(
     ChangeEmailEvent event,
-    Emitter<LoginState> emit,
+    Emitter<RegisterState> emit,
   ) {
     emit(
       ChangedEmailState(
@@ -38,7 +35,7 @@ class BlocLogin extends Bloc<LoginEvent, LoginState> {
 
   void _onChangePasswordEvent(
     ChangePasswordEvent event,
-    Emitter<LoginState> emit,
+    Emitter<RegisterState> emit,
   ) {
     emit(
       ChangedPasswordState(
@@ -49,26 +46,22 @@ class BlocLogin extends Bloc<LoginEvent, LoginState> {
     );
   }
 
-  Future<void> _onSendLoginEvent(
-    SendLoginEvent event,
-    Emitter<LoginState> emit,
+  Future<void> _onSendRegisterEvent(
+    SendRegisterEvent event,
+    Emitter<RegisterState> emit,
   ) async {
     try {
-      emit(LoadingLoginState(state.model));
+      emit(LoadingRegisterState(state.model));
 
       final userCredential =
-          await firebaseInstace.firebaseAuth.signInWithEmailAndPassword(
+          await firebaseInstace.firebaseAuth.createUserWithEmailAndPassword(
         email: state.model.email,
         password: state.model.password,
       );
-
-      prefs.isLogged = true;
-      prefs.uid = userCredential.user?.uid ?? '';
-      prefs.token = userCredential.user?.uid ?? '';
-      prefs.refreshToken = userCredential.user?.refreshToken ?? '';
+      userCredential.user?.sendEmailVerification();
 
       emit(
-        LoadedLoginState(
+        LoadedRegisterState(
           state.model.copyWith(
             userCredential: userCredential,
           ),
@@ -76,7 +69,7 @@ class BlocLogin extends Bloc<LoginEvent, LoginState> {
       );
     } on FirebaseAuthException catch (error) {
       emit(
-        ErrorLoginState(
+        ErrorRegisterState(
           model: state.model,
           message: error.message ?? '',
         ),

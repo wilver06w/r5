@@ -1,4 +1,4 @@
-part of 'package:r5/app/screen/login/page.dart';
+part of 'package:r5/app/screen/register/page.dart';
 
 class Body extends StatelessWidget {
   const Body({
@@ -18,6 +18,12 @@ class Body extends StatelessWidget {
           color: Colors.black,
           textStyle: GoogleFonts.lato(),
         ),
+        const Gap(VerifikSpacing.sl),
+        VerifikText.small(
+          label: R5UiValues.register,
+          color: Colors.black,
+          textStyle: GoogleFonts.lato(),
+        ),
         const Gap(VerifikSpacing.md),
         SvgPicture.asset(
           R5UiValues.logor5,
@@ -31,7 +37,7 @@ class Body extends StatelessWidget {
             formKey: formKeyLogin,
           ),
         ),
-        BlocBuilder<BlocLogin, LoginState>(
+        BlocBuilder<BlocRegister, RegisterState>(
           builder: (context, state) {
             bool isFormValidate = state.model.isFormFilledLogin;
             return Button(
@@ -42,7 +48,7 @@ class Body extends StatelessWidget {
                       final formState = formKeyLogin.currentState;
 
                       if (isFormValidate && (formState?.validate() ?? true)) {
-                        context.read<BlocLogin>().add(SendLoginEvent());
+                        context.read<BlocRegister>().add(SendRegisterEvent());
                       } else {
                         showToast(
                           R5UiValues.completeTheData,
@@ -57,16 +63,6 @@ class Body extends StatelessWidget {
                   : null,
             );
           },
-        ),
-        const Gap(VerifikSpacing.xxl),
-        InkWell(
-          onTap: () {
-            R5Route.navRegister();
-          },
-          child: VerifikText.title(
-            label: R5UiValues.register,
-            textStyle: GoogleFonts.lato(),
-          ),
         ),
       ],
     );

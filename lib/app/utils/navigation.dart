@@ -13,6 +13,12 @@ class R5Route {
       (_) => false,
     );
   }
+
+  static Future<Object?> navRegister() async {
+    return Modular.to.pushNamed(
+      '/register',
+    );
+  }
 //TODO: remover after
   // static Future<Object?> navMapsReplacement(
   //     {required ServicesPending data}) async {

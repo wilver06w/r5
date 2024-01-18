@@ -26,21 +26,13 @@ class ErrorState extends State {
 }
 
 class Model extends Equatable {
-  final bool isEdit;
-
-  const Model({
-    this.isEdit = false,
-  });
+  const Model();
   Model copyWith({
-    bool? isEdit, required key,
+    required key,
   }) {
-    return Model(
-      isEdit: isEdit ?? this.isEdit,
-    );
+    return const Model();
   }
 
   @override
-  List<Object?> get props => [
-        isEdit,
-      ];
+  List<Object?> get props => [];
 }
