@@ -48,3 +48,5 @@ class ChangeTitleEvent extends TaskEvent {
 }
 
 class SaveTaskEvent extends TaskEvent {}
+
+class EditTaskEvent extends TaskEvent {}

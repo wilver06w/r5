@@ -19,6 +19,7 @@ class BlocTask extends Bloc<TaskEvent, TaskState> {
     on<ChangeDescriptionEvent>(_onChangeDescriptionEvent);
     on<ChangeTitleEvent>(_onChangeTitleEvent);
     on<SaveTaskEvent>(_onSaveTaskEvent);
+    on<EditTaskEvent>(_onEditTaskEvent);
   }
   final R5FirebaseInstance firebaseInstace;
 
@@ -41,6 +42,43 @@ class BlocTask extends Bloc<TaskEvent, TaskState> {
           );
 
       refBd.add({
+        'title': state.model.title,
+        'description': state.model.description,
+        'completed': state.model.isCompleted,
+        'date': state.model.date,
+      });
+
+      emit(LoadedSaveTaskState(state.model));
+    } on FirebaseException catch (error) {
+      emit(
+        ErrorSaveTaskState(
+          model: state.model,
+          message: error.message ?? '',
+        ),
+      );
+    }
+  }
+
+  Future<void> _onEditTaskEvent(
+    EditTaskEvent event,
+    Emitter<TaskState> emit,
+  ) async {
+    try {
+      emit(LoadingSaveTaskState(state.model));
+
+      final refBd = firebaseInstace.firebaseFirestore
+          .collection(
+            R5UiValues.nameTaskBd,
+          )
+          .doc(
+            firebaseInstace.firebaseAuth.currentUser?.uid,
+          )
+          .collection(
+            R5UiValues.nameCollection,
+          )
+          .doc(state.model.id);
+
+      refBd.update({
         'title': state.model.title,
         'description': state.model.description,
         'completed': state.model.isCompleted,

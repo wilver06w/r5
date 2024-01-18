@@ -30,6 +30,11 @@ class Body extends StatelessWidget {
     return ListView(
       children: [
         const Gap(VerifikSpacing.md),
+        SectionLogout(
+          onTap: () {
+            context.read<BlocHome>().add(LogoutEvent());
+          },
+        ),
         Center(
           child: VerifikText.title(
             label: R5UiValues.todoListApp,

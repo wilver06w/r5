@@ -29,6 +29,23 @@ class ErrorDeleteItemState extends HomeState {
   final String message;
 }
 
+class LoadingLogoutState extends HomeState {
+  const LoadingLogoutState(Model model) : super(model);
+}
+
+class LoadedLogoutState extends HomeState {
+  const LoadedLogoutState(Model model) : super(model);
+}
+
+class ErrorLogoutState extends HomeState {
+  const ErrorLogoutState({
+    required Model model,
+    this.message = '',
+  }) : super(model);
+
+  final String message;
+}
+
 class Model extends Equatable {
   const Model();
 

@@ -24,6 +24,7 @@ part 'package:r5/app/screen/task/_sections/bottom.dart';
 part 'package:r5/app/screen/task/_sections/input_description.dart';
 part 'package:r5/app/screen/task/_sections/form_task.dart';
 part 'package:r5/app/screen/task/_sections/button_task.dart';
+part 'package:r5/app/screen/task/_sections/input_title.dart';
 
 class Page extends StatelessWidget {
   const Page({
@@ -68,7 +69,18 @@ Future<void> _listener(BuildContext context, TaskState state) async {
   } else if (state is LoadedSaveTaskState) {
     Navigator.pop(context);
     showToast(
-      '${R5UiValues.userRegisterSuccesful}\n${R5UiValues.nowYouCanLogIn}',
+      R5UiValues.taskCreateSuccesful,
+      backgroundColor: VerifikColors.rybBlue,
+      textStyle: const TextStyle(
+        color: Colors.white,
+      ),
+      duration: const Duration(seconds: 10),
+    );
+    Navigator.pop(context);
+  } else if (state is LoadedEditTaskState) {
+    Navigator.pop(context);
+    showToast(
+      R5UiValues.taskEditSuccesful,
       backgroundColor: VerifikColors.rybBlue,
       textStyle: const TextStyle(
         color: Colors.white,

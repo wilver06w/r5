@@ -14,16 +14,16 @@ class ButtonTask extends StatelessWidget {
       builder: (context, state) {
         bool isFormValidate = state.model.isFormFilledTask;
         return Button(
-          title: state.model.isEdit
-              ? R5UiValues.editTask
-              : R5UiValues.save,
+          title: state.model.isEdit ? R5UiValues.editTask : R5UiValues.save,
           backgroundColor: VerifikColors.primaryColor,
           onPressed: isFormValidate
               ? () {
                   final formState = formKeyTask.currentState;
 
                   if (isFormValidate && (formState?.validate() ?? true)) {
-                    context.read<BlocTask>().add(SaveTaskEvent());
+                    state.model.isEdit
+                        ? context.read<BlocTask>().add(EditTaskEvent())
+                        : context.read<BlocTask>().add(SaveTaskEvent());
                   } else {
                     showToast(
                       R5UiValues.completeTheData,

@@ -15,28 +15,7 @@ class FormTask extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          XigoTextField(
-            controller: null,
-            hintText: R5UiValues.title,
-            fillColor: Colors.white,
-            filled: true,
-            validator: (value) {
-              if ((value ?? '').isEmpty) {
-                return '${R5UiValues.title} ${R5UiValues.onRequired}';
-              }
-              return null;
-            },
-            textInputFormatters: [
-              FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
-            ],
-            onChanged: (value) {
-              context.read<BlocTask>().add(
-                    ChangeTitleEvent(
-                      title: value,
-                    ),
-                  );
-            },
-          ),
+          const InputTitle(),
           const Gap(VerifikSpacing.md),
           BlocBuilder<BlocTask, TaskState>(
             builder: (context, state) {

@@ -30,18 +30,4 @@ class R5Route {
       '/register',
     );
   }
-//TODO: remover after
-  // static Future<Object?> navMapsReplacement(
-  //     {required ServicesPending data}) async {
-  //   return await Modular.to.pushReplacementNamed(
-  //     '/maps/',
-  //     arguments: {
-  //       'data': data,
-  //     },
-  //   );
-  // }
-
-  // static Future<Object?> navEdit() async {
-  //   return await Modular.to.pushNamed('/profile/edit');
-  // }
 }

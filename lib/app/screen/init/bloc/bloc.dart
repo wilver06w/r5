@@ -27,19 +27,13 @@ class Bloc extends bloc.Bloc<Event, State> {
   final AppConfig app;
   final Preferences prefs;
   final R5FirebaseInstance firebaseIns;
-  //TODO: revisar
-  // final XigoHttpClient httpClient;
-  // final TokenRepository tokenRepository;
-  // final repository_code.Repository repositoryCode;
 
   Future<void> _onLoadEvent(
     InitEvent event,
     Emitter<State> emit,
   ) async {
     try {
-      // await isTokenExpired();
       if (!prefs.isLogged || prefs.token.isEmpty) {
-        // || tokenRepository.isTokenExpired(prefs.msToken)) {
         emit(
           UnLoggedState(
             state.model.copyWith(
@@ -54,14 +48,4 @@ class Bloc extends bloc.Bloc<Event, State> {
       emit(ErrorState(state.model));
     }
   }
-
-  // Future<void> isTokenExpired() async {
-  //   if (tokenRepository.isTokenExpired(prefs.msToken)) {
-  //     await tokenRepository.refreshToken(
-  //       prefs: prefs,
-  //       httpClient: httpClient,
-  //     );
-  //     prefs.reload();
-  //   }
-  // }
 }

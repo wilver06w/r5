@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
-import 'package:r5/app/utils/functions.dart';
 
 class Task extends Equatable {
   const Task({

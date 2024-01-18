@@ -14,3 +14,5 @@ class DeleteItemTaskEvent extends HomeEvent {
 
   final String id;
 }
+
+class LogoutEvent extends HomeEvent {}

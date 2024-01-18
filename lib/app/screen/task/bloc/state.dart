@@ -40,6 +40,10 @@ class LoadedSaveTaskState extends TaskState {
   const LoadedSaveTaskState(Model model) : super(model);
 }
 
+class LoadedEditTaskState extends TaskState {
+  const LoadedEditTaskState(Model model) : super(model);
+}
+
 class ErrorSaveTaskState extends TaskState {
   const ErrorSaveTaskState({
     required Model model,

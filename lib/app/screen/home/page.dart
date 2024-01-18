@@ -13,6 +13,7 @@ import 'package:r5/app/utils/config/firebase_instance.dart';
 import 'package:r5/app/utils/functions.dart';
 import 'package:r5/app/utils/http/http_client.dart' hide ModularWatchExtension;
 import 'package:r5/app/utils/navigation.dart';
+import 'package:r5/app/utils/preferences.dart';
 import 'package:r5/app/utils/r5_loading.dart';
 import 'package:r5/app/utils/r5_ui.dart';
 import 'package:r5/app/utils/spacing.dart';
@@ -23,6 +24,7 @@ part 'package:r5/app/screen/home/_sections/bottom.dart';
 part 'package:r5/app/screen/home/_sections/container_time.dart';
 part 'package:r5/app/screen/home/_sections/builder_list.dart';
 part 'package:r5/app/screen/home/_sections/item_task.dart';
+part 'package:r5/app/screen/home/_sections/logout.dart';
 
 class Page extends StatelessWidget {
   const Page({super.key});
@@ -33,6 +35,7 @@ class Page extends StatelessWidget {
     return BlocProvider<BlocHome>(
       create: (context) => BlocHome(
         firebaseInstace: Modular.get<R5FirebaseInstance>(),
+        prefs: Modular.get<Preferences>(),
       ),
       child: BlocListener<BlocHome, HomeState>(
         listener: _listener,
@@ -59,7 +62,7 @@ class Page extends StatelessWidget {
 }
 
 Future<void> _listener(BuildContext context, HomeState state) async {
-  if (state is LoadingDeleteItemState) {
+  if (state is LoadingDeleteItemState || state is LoadingLogoutState) {
     R5Loading.show(context);
   } else if (state is LoadedDeletedItemState) {
     Navigator.pop(context);
@@ -72,6 +75,17 @@ Future<void> _listener(BuildContext context, HomeState state) async {
       duration: const Duration(seconds: 10),
     );
   } else if (state is ErrorDeleteItemState) {
+    Navigator.pop(context);
+    showToast(
+      state.message,
+      backgroundColor: VerifikColors.rybBlue,
+      textStyle: const TextStyle(
+        color: Colors.white,
+      ),
+    );
+  } else if (state is LoadedLogoutState) {
+    R5Route.navLogin();
+  } else if (state is ErrorLogoutState) {
     Navigator.pop(context);
     showToast(
       state.message,
