@@ -83,6 +83,8 @@ class BlocTask extends Bloc<TaskEvent, TaskState> {
         'description': state.model.description,
         'completed': state.model.isCompleted,
         'date': state.model.date,
+        'ttitle': '',
+        'tdescription': '',
       });
 
       emit(LoadedSaveTaskState(state.model));

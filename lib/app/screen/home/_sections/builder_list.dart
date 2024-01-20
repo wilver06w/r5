@@ -37,7 +37,7 @@ class BuilderList extends StatelessWidget {
         final tasksNoCompleted = snapshot.data!.docs
             .map((doc) => doc.data())
             .toList()
-          ..removeWhere((element) => element.completed);
+          ..removeWhere((element) => !element.completed);
 
         if (tasks.isEmpty) {
           return Column(
