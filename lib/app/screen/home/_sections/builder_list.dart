@@ -52,17 +52,17 @@ class BuilderList extends StatelessWidget {
         }
         return Column(
           children: [
-            if (tasksCompleted.isNotEmpty) ...[
-              ListTypes(
-                tasks: tasksCompleted,
-                isCompleted: true,
-              ),
-              const Gap(R5Spacing.md),
-            ],
             if (tasksNoCompleted.isNotEmpty) ...[
               ListTypes(
                 tasks: tasksNoCompleted,
                 isCompleted: false,
+              ),
+              const Gap(R5Spacing.md),
+            ],
+            if (tasksCompleted.isNotEmpty) ...[
+              ListTypes(
+                tasks: tasksCompleted,
+                isCompleted: true,
               ),
             ],
           ],
