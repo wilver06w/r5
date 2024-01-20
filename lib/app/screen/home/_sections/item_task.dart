@@ -16,7 +16,7 @@ class ItemTask extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: VerifikSpacing.md,
+        horizontal: R5Spacing.md,
       ),
       child: InkWell(
         onTap: onTap,
@@ -27,7 +27,7 @@ class ItemTask extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(VerifikSpacing.sm),
+            padding: const EdgeInsets.all(R5Spacing.sm),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.max,
@@ -35,7 +35,7 @@ class ItemTask extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    VerifikText.body(
+                    R5Text.body(
                       label: taskItem.title,
                       color: Colors.black,
                       textStyle: GoogleFonts.lato(),
@@ -46,8 +46,8 @@ class ItemTask extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Gap(VerifikSpacing.md),
-                VerifikText.labelText(
+                const Gap(R5Spacing.md),
+                R5Text.labelText(
                   label: taskItem.description,
                   color: Colors.black,
                   textStyle: GoogleFonts.lato(),

@@ -5,8 +5,8 @@
 //  ███████║██║·····██║··██║╚██████╗██║██║·╚████║╚██████╔╝
 //  ╚══════╝╚═╝·····╚═╝··╚═╝·╚═════╝╚═╝╚═╝··╚═══╝·╚═════╝·
 
-class VerifikSpacing {
-  VerifikSpacing._();
+class R5Spacing {
+  R5Spacing._();
 
   ///zero = 0
   static const double zero = 0;

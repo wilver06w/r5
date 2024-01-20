@@ -42,7 +42,7 @@ class Page extends StatelessWidget {
       child: BlocListener<BlocHome, HomeState>(
         listener: _listener,
         child: Scaffold(
-          backgroundColor: VerifikColors.backgroundColor,
+          backgroundColor: R5Colors.backgroundColor,
           bottomNavigationBar: BodyBottom(app: app),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
@@ -70,7 +70,7 @@ Future<void> _listener(BuildContext context, HomeState state) async {
     Navigator.pop(context);
     showToast(
       R5UiValues.deleteTaskSuccess,
-      backgroundColor: VerifikColors.rybBlue,
+      backgroundColor: R5Colors.rybBlue,
       textStyle: const TextStyle(
         color: Colors.white,
       ),
@@ -80,7 +80,7 @@ Future<void> _listener(BuildContext context, HomeState state) async {
     Navigator.pop(context);
     showToast(
       state.message,
-      backgroundColor: VerifikColors.rybBlue,
+      backgroundColor: R5Colors.rybBlue,
       textStyle: const TextStyle(
         color: Colors.white,
       ),
@@ -91,7 +91,7 @@ Future<void> _listener(BuildContext context, HomeState state) async {
     Navigator.pop(context);
     showToast(
       state.message,
-      backgroundColor: VerifikColors.rybBlue,
+      backgroundColor: R5Colors.rybBlue,
       textStyle: const TextStyle(
         color: Colors.white,
       ),

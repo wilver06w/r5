@@ -9,8 +9,8 @@
 
 import 'package:flutter/material.dart';
 
-class VerifikColors {
-  const VerifikColors._();
+class R5Colors {
+  const R5Colors._();
 
   ///brightTurquoise
   static const Color brightTurquoise = Color(0xff00ecd2);
@@ -59,9 +59,6 @@ class VerifikColors {
 
   ///rybBlue
   static const Color rybBlue = Color(0xFF0036e7);
-
-
-
 
   ///maximumRed
   static const Color maximumRed = Color(0xFFdc2626);

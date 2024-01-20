@@ -54,8 +54,8 @@ class XigoTextArea extends StatelessWidget {
       title: title,
       maxLength: maxLength,
       titleStyle: const TextStyle(
-        fontFamily: VerifikTypography.inter,
-        color: VerifikColors.disabledColor,
+        fontFamily: R5Typography.inter,
+        color: R5Colors.disabledColor,
         fontSize: 12,
         fontWeight: FontWeight.w600,
         fontStyle: FontStyle.normal,
@@ -73,8 +73,8 @@ class XigoTextArea extends StatelessWidget {
           ),
       hintTextStyle: hintTextStyle ??
           TextStyle(
-            fontFamily: VerifikTypography.inter,
-            color: hintColor ?? VerifikColors.silver,
+            fontFamily: R5Typography.inter,
+            color: hintColor ?? R5Colors.silver,
             fontSize: 16,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
@@ -87,35 +87,35 @@ class XigoTextArea extends StatelessWidget {
               Radius.circular(10),
             ),
             borderSide: BorderSide(
-              color: VerifikColors.information,
+              color: R5Colors.information,
               width: 1.0,
             ),
           ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: const BorderSide(
-          color: VerifikColors.chineseSilver,
+          color: R5Colors.chineseSilver,
           width: 1.0,
         ),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: const BorderSide(
-          color: VerifikColors.dangerColor,
+          color: R5Colors.dangerColor,
           width: 1.0,
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: const BorderSide(
-          color: VerifikColors.dangerColor,
+          color: R5Colors.dangerColor,
           width: 1.0,
         ),
       ),
       disabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: const BorderSide(
-          color: VerifikColors.dividerColor,
+          color: R5Colors.dividerColor,
           width: 1.0,
         ),
       ),

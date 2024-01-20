@@ -2,22 +2,10 @@ import 'package:r5/app/utils/colors.dart';
 import 'package:r5/app/utils/text/typography.dart';
 import 'package:flutter/material.dart';
 
-enum VerifikTextType {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  body,
-  title,
-  label,
-  small,
-  xSmall
-}
+enum R5TextType { h1, h2, h3, h4, h5, h6, body, title, label, small, xSmall }
 
-class VerifikText {
-  VerifikText._();
+class R5Text {
+  R5Text._();
 
   ///h1 Text widget - fontSize 96
   static Widget h1({
@@ -35,8 +23,8 @@ class VerifikText {
       _TextGeneric(
         key: key,
         label: label,
-        fontSize: VerifikTypography.h1,
-        color: color ?? VerifikColors.textColorSecondary,
+        fontSize: R5Typography.h1,
+        color: color ?? R5Colors.textColorSecondary,
         fontStyle: FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.normal,
         textAlign: textAlign,
@@ -63,8 +51,8 @@ class VerifikText {
       _TextGeneric(
         key: key,
         label: label,
-        fontSize: VerifikTypography.h2,
-        color: color ?? VerifikColors.textColorSecondary,
+        fontSize: R5Typography.h2,
+        color: color ?? R5Colors.textColorSecondary,
         fontStyle: FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.normal,
         textAlign: textAlign,
@@ -91,8 +79,8 @@ class VerifikText {
       _TextGeneric(
         key: key,
         label: label,
-        fontSize: VerifikTypography.h3,
-        color: color ?? VerifikColors.textColorSecondary,
+        fontSize: R5Typography.h3,
+        color: color ?? R5Colors.textColorSecondary,
         fontStyle: FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.normal,
         textAlign: textAlign,
@@ -119,7 +107,7 @@ class VerifikText {
       _TextGeneric(
         key: key,
         label: label,
-        fontSize: VerifikTypography.h4,
+        fontSize: R5Typography.h4,
         fontStyle: FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.normal,
         textAlign: textAlign,
@@ -146,8 +134,8 @@ class VerifikText {
       _TextGeneric(
         key: key,
         label: label,
-        fontSize: VerifikTypography.h5,
-        color: color ?? VerifikColors.textColorSecondary,
+        fontSize: R5Typography.h5,
+        color: color ?? R5Colors.textColorSecondary,
         fontStyle: FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.normal,
         textAlign: textAlign,
@@ -174,8 +162,8 @@ class VerifikText {
       _TextGeneric(
         key: key,
         label: label,
-        fontSize: VerifikTypography.h6,
-        color: color ?? VerifikColors.textColorSecondary,
+        fontSize: R5Typography.h6,
+        color: color ?? R5Colors.textColorSecondary,
         fontStyle: FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.bold,
         textAlign: textAlign,
@@ -202,8 +190,8 @@ class VerifikText {
       _TextGeneric(
         key: key,
         label: label,
-        fontSize: VerifikTypography.body,
-        color: color ?? VerifikColors.textColorSecondary,
+        fontSize: R5Typography.body,
+        color: color ?? R5Colors.textColorSecondary,
         fontStyle: FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.normal,
         textAlign: textAlign,
@@ -229,8 +217,8 @@ class VerifikText {
       _TextGeneric(
         key: key,
         label: label,
-        fontSize: VerifikTypography.title,
-        color: color ?? VerifikColors.textColorSecondary,
+        fontSize: R5Typography.title,
+        color: color ?? R5Colors.textColorSecondary,
         fontStyle: FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.normal,
         textAlign: textAlign,
@@ -256,8 +244,8 @@ class VerifikText {
       _TextGeneric(
         key: key,
         label: label,
-        fontSize: VerifikTypography.label,
-        color: color ?? VerifikColors.textColorSecondary,
+        fontSize: R5Typography.label,
+        color: color ?? R5Colors.textColorSecondary,
         fontStyle: FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.normal,
         textAlign: textAlign,
@@ -284,8 +272,8 @@ class VerifikText {
       _TextGeneric(
         key: key,
         label: label,
-        fontSize: VerifikTypography.xSmall,
-        color: color ?? VerifikColors.textColorSecondary,
+        fontSize: R5Typography.xSmall,
+        color: color ?? R5Colors.textColorSecondary,
         fontStyle: FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.normal,
         textAlign: textAlign,
@@ -312,8 +300,8 @@ class VerifikText {
       _TextGeneric(
         key: key,
         label: label,
-        fontSize: VerifikTypography.small,
-        color: color ?? VerifikColors.textColorSecondary,
+        fontSize: R5Typography.small,
+        color: color ?? R5Colors.textColorSecondary,
         fontStyle: FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.normal,
         textAlign: textAlign,
@@ -340,8 +328,8 @@ class VerifikText {
       _TextGeneric(
         key: key,
         label: label,
-        fontSize: VerifikTypography.body,
-        color: color ?? VerifikColors.textColorSecondary,
+        fontSize: R5Typography.body,
+        color: color ?? R5Colors.textColorSecondary,
         fontStyle: FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.w600,
         textAlign: textAlign,
@@ -371,7 +359,7 @@ class VerifikText {
         key: key,
         label: label,
         fontSize: fontSize,
-        color: color ?? VerifikColors.textColorSecondary,
+        color: color ?? R5Colors.textColorSecondary,
         fontStyle: fontStyle,
         fontWeight: fontWeight ?? FontWeight.normal,
         textAlign: textAlign,
@@ -395,7 +383,7 @@ class VerifikText {
   }) =>
       TextStyle(
         height: lineHeight,
-        fontFamily: VerifikTypography.inter,
+        fontFamily: R5Typography.inter,
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight,
@@ -441,7 +429,7 @@ class _TextGeneric extends StatelessWidget {
       textAlign: textAlign,
       maxLines: maxLines,
       style: TextStyle(
-        fontFamily: VerifikTypography.inter,
+        fontFamily: R5Typography.inter,
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight,

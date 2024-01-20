@@ -12,7 +12,7 @@ class ContainerTime extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(
-        VerifikSpacing.sl,
+        R5Spacing.sl,
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
@@ -23,21 +23,21 @@ class ContainerTime extends StatelessWidget {
       child: Row(
         children: [
           if (dateTime.day > 0) ...[
-            VerifikText.labelText(
+            R5Text.labelText(
               label: '${dateTime.day}d',
               color: Colors.white,
               textOverflow: TextOverflow.ellipsis,
             ),
           ],
           if (dateTime.hour > 0 && dateTime.hour < 25) ...[
-            VerifikText.labelText(
+            R5Text.labelText(
               label: '${dateTime.hour}h',
               color: Colors.white,
               textOverflow: TextOverflow.ellipsis,
             ),
           ],
           if (dateTime.minute >= 0 && dateTime.minute < 60) ...[
-            VerifikText.labelText(
+            R5Text.labelText(
               label: dateTime.minute == 0 ? '1m' : '${dateTime.minute}m',
               color: Colors.white,
               textOverflow: TextOverflow.ellipsis,

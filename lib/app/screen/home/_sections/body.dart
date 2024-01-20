@@ -29,20 +29,20 @@ class Body extends StatelessWidget {
 
     return ListView(
       children: [
-        const Gap(VerifikSpacing.md),
+        const Gap(R5Spacing.md),
         SectionLogout(
           onTap: () {
             context.read<BlocHome>().add(LogoutEvent());
           },
         ),
         Center(
-          child: VerifikText.title(
+          child: R5Text.title(
             label: R5UiValues.todoListApp,
             color: Colors.black,
             textStyle: GoogleFonts.lato(),
           ),
         ),
-        const Gap(VerifikSpacing.md),
+        const Gap(R5Spacing.md),
         BuilderList(
           refBd: refBd,
         ),

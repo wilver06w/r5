@@ -46,17 +46,17 @@ class XigoCheckField extends StatelessWidget {
       fillColor: Colors.white,
       textAlignVertical: TextAlignVertical.center,
       hintTextStyle: const TextStyle(
-        color: VerifikColors.azureishWhite,
+        color: R5Colors.azureishWhite,
       ),
       inputTextStyle: TextStyle(
         fontFamily: isNumber
-            ? VerifikTypography.robotoMono
-            : VerifikTypography.nunitoSans,
+            ? R5Typography.robotoMono
+            : R5Typography.nunitoSans,
       ),
       prefixIcon: Icon(
         preffixIcon,
         size: 20,
-        color: VerifikColors.sonicSilver,
+        color: R5Colors.sonicSilver,
       ),
       focusedBorder: focusedBorderColor != null
           ? OutlineInputBorder(
@@ -67,9 +67,9 @@ class XigoCheckField extends StatelessWidget {
             )
           : null,
       suffixIcon: Padding(
-        padding: const EdgeInsets.all(VerifikSpacing.sm),
+        padding: const EdgeInsets.all(R5Spacing.sm),
         child: Material(
-          color: buttonColor ?? VerifikColors.primaryColor,
+          color: buttonColor ?? R5Colors.primaryColor,
           borderRadius: BorderRadius.circular(5.0),
           child: InkWell(
             onTap: onCheckTap,

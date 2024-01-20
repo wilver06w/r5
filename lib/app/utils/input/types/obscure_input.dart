@@ -44,8 +44,8 @@ class _XigoObscureInputState extends State<XigoObscureInput> {
         if (widget.title.isNotEmpty)
           Padding(
             padding: const EdgeInsets.only(
-              bottom: VerifikSpacing.xs,
-              left: VerifikSpacing.xxs,
+              bottom: R5Spacing.xs,
+              left: R5Spacing.xxs,
             ),
             child: RichText(
               text: TextSpan(
@@ -54,8 +54,8 @@ class _XigoObscureInputState extends State<XigoObscureInput> {
                     const TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 12,
-                      fontFamily: VerifikTypography.inter,
-                      color: VerifikColors.disabledColor,
+                      fontFamily: R5Typography.inter,
+                      color: R5Colors.disabledColor,
                     ),
                 children: const [],
               ),
@@ -67,7 +67,7 @@ class _XigoObscureInputState extends State<XigoObscureInput> {
           keyboardType: widget.keyboardType,
           textAlign: TextAlign.start,
           validator: widget.validator,
-          style: VerifikText.style(),
+          style: R5Text.style(),
           onChanged: widget.onChanged,
           decoration: InputDecoration(
             suffixIcon: InkWell(
@@ -82,8 +82,8 @@ class _XigoObscureInputState extends State<XigoObscureInput> {
             filled: widget.filled,
             fillColor: widget.fillColor ?? Colors.white,
             hintText: widget.hintText ?? widget.title,
-            hintStyle: VerifikText.style().copyWith(
-              color: VerifikColors.silver,
+            hintStyle: R5Text.style().copyWith(
+              color: R5Colors.silver,
             ),
             border: OutlineInputBorder(
               borderRadius: const BorderRadius.all(Radius.circular(10.0)),
@@ -94,24 +94,24 @@ class _XigoObscureInputState extends State<XigoObscureInput> {
             enabledBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
               borderSide: BorderSide(
-                color: VerifikColors.whiteSecundary,
+                color: R5Colors.whiteSecundary,
               ),
             ),
             errorBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
               borderSide: BorderSide(
-                color: VerifikColors.error,
+                color: R5Colors.error,
               ),
             ),
             labelStyle: TextStyle(
-              fontFamily: VerifikTypography.inter,
+              fontFamily: R5Typography.inter,
               color: Theme.of(context).textSelectionTheme.selectionColor,
-              fontSize: VerifikSpacing.md,
+              fontSize: R5Spacing.md,
               fontWeight: FontWeight.w400,
               fontStyle: FontStyle.normal,
             ),
             errorStyle: const TextStyle(
-              color: VerifikColors.error,
+              color: R5Colors.error,
             ),
           ),
         ),

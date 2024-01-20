@@ -56,6 +56,7 @@ class BuilderList extends StatelessWidget {
                 tasks: tasksCompleted,
                 isCompleted: true,
               ),
+              const Gap(R5Spacing.md),
             ],
             if (tasksNoCompleted.isNotEmpty) ...[
               ListTypes(

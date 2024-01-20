@@ -13,15 +13,15 @@ class BodyBottom extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: VerifikSpacing.md),
+        padding: const EdgeInsets.symmetric(vertical: R5Spacing.md),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            VerifikText.small(
+            R5Text.small(
               label: R5UiValues.textFooter,
               textStyle: GoogleFonts.lato(),
             ),
-            VerifikText.xSmall(
+            R5Text.xSmall(
               label: '${R5UiValues.version} ${app.version}',
             ),
           ],

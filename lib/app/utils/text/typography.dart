@@ -1,5 +1,5 @@
-class VerifikTypography {
-  const VerifikTypography._();
+class R5Typography {
+  const R5Typography._();
 
   static const String nunitoSans = 'NunitoSans';
 
@@ -70,7 +70,7 @@ class VerifikTypography {
   static const double medium = 12;
 
   ///Small = 10
-  static const double verifikSmall = 10;
+  static const double R5Small = 10;
 
   ///captionSmall = 12
   static const double captionSmall = 12;

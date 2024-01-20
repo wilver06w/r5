@@ -52,7 +52,7 @@ class XigoCodeInput extends StatelessWidget {
                   filled: boxColor != null,
                   controller: charactersController[character]!,
                   focusNode: charactersFocus[character],
-                  contentPadding: const EdgeInsets.all(VerifikSpacing.sl),
+                  contentPadding: const EdgeInsets.all(R5Spacing.sl),
                   borderRadius: BorderRadius.circular(10),
                   textAlign: TextAlign.center,
                   maxLength: 2,
@@ -62,7 +62,7 @@ class XigoCodeInput extends StatelessWidget {
                   inputTextStyle: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
-                    fontSize: VerifikTypography.h6,
+                    fontSize: R5Typography.h6,
                   ),
                   validator: (String? value) {
                     if (value != null && value.isEmpty) {
