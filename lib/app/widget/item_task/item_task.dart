@@ -1,4 +1,12 @@
-part of 'package:r5/app/screen/home/page.dart';
+
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:r5/app/models/task.dart';
+import 'package:r5/app/screen/home/page.dart';
+import 'package:r5/app/utils/functions.dart';
+import 'package:r5/app/utils/spacing.dart';
+import 'package:r5/app/utils/text/text.dart';
 
 class ItemTask extends StatelessWidget {
   const ItemTask({

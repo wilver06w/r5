@@ -19,12 +19,12 @@ import 'package:r5/app/utils/r5_loading.dart';
 import 'package:r5/app/utils/r5_ui.dart';
 import 'package:r5/app/utils/spacing.dart';
 import 'package:r5/app/utils/text/text.dart';
+import 'package:r5/app/widget/item_task/item_task.dart';
 
 part 'package:r5/app/screen/home/_sections/body.dart';
 part 'package:r5/app/screen/home/_sections/bottom.dart';
 part 'package:r5/app/screen/home/_sections/container_time.dart';
 part 'package:r5/app/screen/home/_sections/builder_list.dart';
-part 'package:r5/app/screen/home/_sections/item_task.dart';
 part 'package:r5/app/screen/home/_sections/logout.dart';
 part 'package:r5/app/screen/home/_sections/list_types.dart';
 
