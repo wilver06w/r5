@@ -29,17 +29,18 @@ class BuilderList extends StatelessWidget {
           );
         }
 
-        final tasks = snapshot.data!.docs.map((doc) => doc.data()).toList();
-        final tasksCompleted = snapshot.data!.docs
-            .map((doc) => doc.data())
-            .toList()
-          ..removeWhere((element) => element.completed);
-        final tasksNoCompleted = snapshot.data!.docs
-            .map((doc) => doc.data())
-            .toList()
-          ..removeWhere((element) => !element.completed);
+        final tasksGet = snapshot.data!.docs.map((doc) => doc.data()).toList();
 
-        if (tasks.isEmpty) {
+        final tasksCompleted = Functions.organizeListForTime(
+          snapshot: snapshot,
+          flag: true,
+        );
+        final tasksNoCompleted = Functions.organizeListForTime(
+          snapshot: snapshot,
+          flag: false,
+        );
+
+        if (tasksGet.isEmpty) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
