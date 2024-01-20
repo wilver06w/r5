@@ -140,7 +140,7 @@ class XigoTextField extends StatelessWidget {
             toolTipRequiredOptionalText: toolTipRequiredOptionalText,
           ),
         TextFormField(
-          cursorColor: cursorColor ?? VerifikColors.ufoGreen,
+          cursorColor: cursorColor ?? R5Colors.ufoGreen,
           obscureText: obscureText,
           initialValue: initialValue,
           controller: controller,
@@ -157,7 +157,7 @@ class XigoTextField extends StatelessWidget {
           textAlign: textAlign ?? TextAlign.start,
           validator: validator,
           autovalidateMode: autovalidateMode,
-          style: inputTextStyle ?? VerifikText.style(),
+          style: inputTextStyle ?? R5Text.style(),
           onChanged: onChanged,
           onTap: onTap as void Function()?,
           onFieldSubmitted: onFieldSubmitted,
@@ -180,14 +180,14 @@ class XigoTextField extends StatelessWidget {
             hintText: hintText,
             hintMaxLines: hintMaxLines,
             hintStyle: hintTextStyle ??
-                VerifikText.style().copyWith(
-                  color: VerifikColors.silver,
+                R5Text.style().copyWith(
+                  color: R5Colors.silver,
                 ),
             border: OutlineInputBorder(
               borderRadius:
                   borderRadius ?? const BorderRadius.all(Radius.circular(10.0)),
               borderSide: const BorderSide(
-                color: VerifikColors.primaryColor,
+                color: R5Colors.primaryColor,
               ),
             ),
             focusedBorder: focusedBorder ??
@@ -195,7 +195,7 @@ class XigoTextField extends StatelessWidget {
                   borderRadius: borderRadius ??
                       const BorderRadius.all(Radius.circular(10.0)),
                   borderSide: const BorderSide(
-                    color: VerifikColors.primaryColor,
+                    color: R5Colors.primaryColor,
                   ),
                 ),
             enabledBorder: enabledBorder ??
@@ -203,7 +203,7 @@ class XigoTextField extends StatelessWidget {
                   borderRadius: borderRadius ??
                       const BorderRadius.all(Radius.circular(10.0)),
                   borderSide: const BorderSide(
-                    color: VerifikColors.whiteSecundary,
+                    color: R5Colors.whiteSecundary,
                   ),
                 ),
             disabledBorder: disabledBorder,
@@ -214,22 +214,22 @@ class XigoTextField extends StatelessWidget {
                         Radius.circular(10.0),
                       ),
                   borderSide: const BorderSide(
-                    color: VerifikColors.dangerColor,
+                    color: R5Colors.dangerColor,
                   ),
                 ),
             focusedErrorBorder: focusedErrorBorder,
             labelStyle: labelTextStyle ??
                 TextStyle(
-                  fontFamily: VerifikTypography.inter,
+                  fontFamily: R5Typography.inter,
                   color: Theme.of(context).textSelectionTheme.selectionColor,
-                  fontSize: VerifikSpacing.md,
+                  fontSize: R5Spacing.md,
                   fontWeight: FontWeight.w400,
                   fontStyle: FontStyle.normal,
                 ),
             errorStyle: errorStyle ??
-                VerifikText.style(
-                  color: VerifikColors.dangerColor,
-                  fontSize: VerifikTypography.verifikSmall,
+                R5Text.style(
+                  color: R5Colors.dangerColor,
+                  fontSize: R5Typography.r5Small,
                   fontWeight: FontWeight.w400,
                 ),
           ),
@@ -255,13 +255,13 @@ class _TextFieldTitle extends StatelessWidget {
   final String? toolTipRequiredOptionalText;
 
   Color titleColor() =>
-      errorText != null ? VerifikColors.dangerColor : VerifikColors.sonicSilver;
+      errorText != null ? R5Colors.dangerColor : R5Colors.sonicSilver;
 
   TextSpan getSpamRequired() {
     return isRequired!
         ? TextSpan(
             text: toolTipRequiredOptionalText ?? '',
-            style: const TextStyle(color: VerifikColors.dangerColor),
+            style: const TextStyle(color: R5Colors.dangerColor),
           )
         : TextSpan(
             text: toolTipRequiredOptionalText ?? '',
@@ -273,7 +273,7 @@ class _TextFieldTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        bottom: VerifikSpacing.xs,
+        bottom: R5Spacing.xs,
       ),
       child: Row(
         children: [
@@ -284,8 +284,8 @@ class _TextFieldTitle extends StatelessWidget {
                 style: titleStyle ??
                     TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: VerifikTypography.medium,
-                      fontFamily: VerifikTypography.inter,
+                      fontSize: R5Typography.medium,
+                      fontFamily: R5Typography.inter,
                       color: titleColor(),
                     ),
                 children: [
@@ -299,7 +299,7 @@ class _TextFieldTitle extends StatelessWidget {
             SvgPicture.asset(
               R5UiValues.worldSvg,
               colorFilter: const ColorFilter.mode(
-                VerifikColors.dangerColor,
+                R5Colors.dangerColor,
                 BlendMode.srcIn,
               ),
             ),

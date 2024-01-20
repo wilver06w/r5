@@ -10,7 +10,7 @@ class Button extends StatelessWidget {
     required this.title,
     this.onPressed,
     this.colorText = Colors.white,
-    this.borderColor = VerifikColors.majorelleBlue,
+    this.borderColor = R5Colors.majorelleBlue,
     this.backgroundColor,
   });
   final String title;
@@ -39,14 +39,14 @@ class Button extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           horizontal: VerifikResponsive.withSizeByContext(
             context,
-            pixels: VerifikSpacing.xs,
+            pixels: R5Spacing.xs,
           ),
           vertical: VerifikResponsive.heightSizeByContext(
             context,
-            pixels: VerifikSpacing.sm,
+            pixels: R5Spacing.sm,
           ),
         ),
-        child: VerifikText.labelText(
+        child: R5Text.labelText(
           label: title,
           color: colorText,
         ),

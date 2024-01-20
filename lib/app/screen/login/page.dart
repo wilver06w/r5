@@ -38,7 +38,7 @@ class Page extends StatelessWidget {
       child: BlocListener<BlocLogin, LoginState>(
         listener: _listener,
         child: Scaffold(
-          backgroundColor: VerifikColors.backgroundColor,
+          backgroundColor: R5Colors.backgroundColor,
           bottomNavigationBar: BodyBottom(app: app),
           body: const SafeArea(
             child: Body(),
@@ -58,7 +58,7 @@ Future<void> _listener(BuildContext context, LoginState state) async {
       state.model.userCredential?.user?.sendEmailVerification();
       showToast(
         R5UiValues.verifyEmail,
-        backgroundColor: VerifikColors.rybBlue,
+        backgroundColor: R5Colors.rybBlue,
         textStyle: const TextStyle(
           color: Colors.white,
         ),
@@ -73,7 +73,7 @@ Future<void> _listener(BuildContext context, LoginState state) async {
     Navigator.pop(context);
     showToast(
       state.message,
-      backgroundColor: VerifikColors.rybBlue,
+      backgroundColor: R5Colors.rybBlue,
       textStyle: const TextStyle(
         color: Colors.white,
       ),

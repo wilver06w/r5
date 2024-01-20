@@ -16,19 +16,19 @@ class FormTask extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const InputTitle(),
-          const Gap(VerifikSpacing.md),
+          const Gap(R5Spacing.md),
           BlocBuilder<BlocTask, TaskState>(
             builder: (context, state) {
-              return VerifikText.small(
+              return R5Text.small(
                 label:
                     '${Functions.textMothDay(moth: state.model.date?.month ?? 1, day: state.model.date?.day ?? 1)} ${state.model.date?.hour}:${state.model.date?.minute} | ${state.model.charactersDescription} ${R5UiValues.characters}',
                 textStyle: GoogleFonts.lato(),
               );
             },
           ),
-          const Gap(VerifikSpacing.md),
+          const Gap(R5Spacing.md),
           const InputDescription(),
-          const Gap(VerifikSpacing.md),
+          const Gap(R5Spacing.md),
           Row(
             children: [
               BlocSelector<BlocTask, TaskState, bool>(
@@ -48,7 +48,7 @@ class FormTask extends StatelessWidget {
                   );
                 },
               ),
-              const Gap(VerifikSpacing.md),
+              const Gap(R5Spacing.md),
               BlocBuilder<BlocTask, TaskState>(
                 builder: (context, state) {
                   return InkWell(
@@ -59,7 +59,7 @@ class FormTask extends StatelessWidget {
                             ),
                           );
                     },
-                    child: VerifikText.body(
+                    child: R5Text.body(
                       label: R5UiValues.completed,
                     ),
                   );
@@ -67,7 +67,7 @@ class FormTask extends StatelessWidget {
               ),
             ],
           ),
-          const Gap(VerifikSpacing.md),
+          const Gap(R5Spacing.md),
         ],
       ),
     );

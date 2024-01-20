@@ -75,7 +75,7 @@ class XigoCodeInput extends StatelessWidget {
               );
             },
           ),
-          if (character != 5) const SizedBox(width: VerifikSpacing.xs),
+          if (character != 5) const SizedBox(width: R5Spacing.xs),
         ]
       ],
     );

@@ -20,11 +20,11 @@ class R5Loading {
             R5UiValues.loadingAnimations,
             height: VerifikResponsive.heightSizeByContext(
               context,
-              pixels: VerifikSpacing.xs,
+              pixels: R5Spacing.xs,
             ),
             width: VerifikResponsive.withSizeByContext(
               context,
-              pixels: VerifikSpacing.xs,
+              pixels: R5Spacing.xs,
             ),
           ),
         );

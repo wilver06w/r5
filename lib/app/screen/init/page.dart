@@ -21,7 +21,7 @@ class Page extends StatelessWidget {
     final prefs = Modular.get<Preferences>();
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: VerifikColors.backgroundColor,
+      backgroundColor: R5Colors.backgroundColor,
       body: BlocProvider(
         create: (context) => bloc.Bloc(
           firebaseIns: Modular.get<R5FirebaseInstance>(),

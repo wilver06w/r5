@@ -55,7 +55,7 @@ class VerifikLoadingCircleState extends State<VerifikLoadingCircle>
           width: widget.width ?? 50,
           child: SvgPicture.asset('assets/animations/loading/loading.svg',
               colorFilter: const ColorFilter.mode(
-                VerifikColors.catalinaBlue,
+                R5Colors.catalinaBlue,
                 BlendMode.srcIn,
               )),
         ),

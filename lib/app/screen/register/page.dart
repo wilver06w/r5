@@ -36,7 +36,7 @@ class Page extends StatelessWidget {
       child: BlocListener<BlocRegister, RegisterState>(
         listener: _listener,
         child: Scaffold(
-          backgroundColor: VerifikColors.backgroundColor,
+          backgroundColor: R5Colors.backgroundColor,
           bottomNavigationBar: BodyBottom(app: app),
           body: const SafeArea(
             child: Body(),
@@ -54,7 +54,7 @@ Future<void> _listener(BuildContext context, RegisterState state) async {
     Navigator.pop(context);
     showToast(
       '${R5UiValues.userRegisterSuccesful}\n${R5UiValues.nowYouCanLogIn}',
-      backgroundColor: VerifikColors.rybBlue,
+      backgroundColor: R5Colors.rybBlue,
       textStyle: const TextStyle(
         color: Colors.white,
       ),
@@ -65,7 +65,7 @@ Future<void> _listener(BuildContext context, RegisterState state) async {
     Navigator.pop(context);
     showToast(
       state.message,
-      backgroundColor: VerifikColors.rybBlue,
+      backgroundColor: R5Colors.rybBlue,
       textStyle: const TextStyle(
         color: Colors.white,
       ),

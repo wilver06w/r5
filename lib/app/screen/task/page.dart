@@ -21,9 +21,9 @@ import 'package:r5/app/widget/checkbox.dart';
 
 part 'package:r5/app/screen/task/_sections/body.dart';
 part 'package:r5/app/screen/task/_sections/bottom.dart';
-part 'package:r5/app/screen/task/_sections/input_description.dart';
-part 'package:r5/app/screen/task/_sections/form_task.dart';
 part 'package:r5/app/screen/task/_sections/button_task.dart';
+part 'package:r5/app/screen/task/_sections/form_task.dart';
+part 'package:r5/app/screen/task/_sections/input_description.dart';
 part 'package:r5/app/screen/task/_sections/input_title.dart';
 
 class Page extends StatelessWidget {
@@ -52,7 +52,7 @@ class Page extends StatelessWidget {
       child: BlocListener<BlocTask, TaskState>(
         listener: _listener,
         child: Scaffold(
-          backgroundColor: VerifikColors.backgroundColor,
+          backgroundColor: R5Colors.backgroundColor,
           bottomNavigationBar: BodyBottom(app: app),
           body: const SafeArea(
             child: Body(),
@@ -70,7 +70,7 @@ Future<void> _listener(BuildContext context, TaskState state) async {
     Navigator.pop(context);
     showToast(
       R5UiValues.taskCreateSuccesful,
-      backgroundColor: VerifikColors.rybBlue,
+      backgroundColor: R5Colors.rybBlue,
       textStyle: const TextStyle(
         color: Colors.white,
       ),
@@ -81,7 +81,7 @@ Future<void> _listener(BuildContext context, TaskState state) async {
     Navigator.pop(context);
     showToast(
       R5UiValues.taskEditSuccesful,
-      backgroundColor: VerifikColors.rybBlue,
+      backgroundColor: R5Colors.rybBlue,
       textStyle: const TextStyle(
         color: Colors.white,
       ),
@@ -92,7 +92,7 @@ Future<void> _listener(BuildContext context, TaskState state) async {
     Navigator.pop(context);
     showToast(
       state.message,
-      backgroundColor: VerifikColors.rybBlue,
+      backgroundColor: R5Colors.rybBlue,
       textStyle: const TextStyle(
         color: Colors.white,
       ),

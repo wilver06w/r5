@@ -47,13 +47,13 @@ class _XigoOptionsFieldState extends State<XigoOptionsField> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: VerifikSpacing.sl,
+        horizontal: R5Spacing.sl,
       ),
       decoration: BoxDecoration(
         color: widget.fillColor ?? Colors.white,
         border: widget.showBorder
             ? Border.all(
-                color: VerifikColors.antiFlashWhite,
+                color: R5Colors.antiFlashWhite,
               )
             : null,
         borderRadius: widget.showBorder
@@ -66,9 +66,9 @@ class _XigoOptionsFieldState extends State<XigoOptionsField> {
         value: _value,
         icon: widget.icon,
         iconSize: widget.iconSize ?? 24.0,
-        hint: VerifikText.body(
+        hint: R5Text.body(
           label: widget.placeholder ?? '',
-          color: widget.hintColor ?? VerifikColors.chineseSilver,
+          color: widget.hintColor ?? R5Colors.chineseSilver,
           fontWeight: FontWeight.w400,
         ),
         borderRadius: widget.showDropdownRadius
@@ -78,7 +78,7 @@ class _XigoOptionsFieldState extends State<XigoOptionsField> {
           (option) {
             return DropdownMenuItem<String>(
               value: option,
-              child: VerifikText.body(
+              child: R5Text.body(
                 label: option,
                 fontWeight: FontWeight.w400,
                 color: widget.itemLabelColor != null

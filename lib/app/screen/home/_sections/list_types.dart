@@ -16,15 +16,15 @@ class ListTypes extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: const EdgeInsets.symmetric(horizontal: VerifikSpacing.md),
-          child: VerifikText.title(
+          margin: const EdgeInsets.symmetric(horizontal: R5Spacing.md),
+          child: R5Text.title(
             label: isCompleted ? R5UiValues.completed : R5UiValues.inProgress,
             color: Colors.black,
             fontWeight: FontWeight.bold,
             textStyle: GoogleFonts.lato(),
           ),
         ),
-        const Gap(VerifikSpacing.xs),
+        const Gap(R5Spacing.xs),
         ...List.generate(
           tasks.length,
           (index) {

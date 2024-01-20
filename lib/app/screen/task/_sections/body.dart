@@ -10,9 +10,9 @@ class Body extends StatelessWidget {
     final formKeyTask = GlobalKey<FormState>();
     return Column(
       children: [
-        const Gap(VerifikSpacing.md),
+        const Gap(R5Spacing.md),
         Container(
-          margin: const EdgeInsets.symmetric(horizontal: VerifikSpacing.md),
+          margin: const EdgeInsets.symmetric(horizontal: R5Spacing.md),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -28,7 +28,7 @@ class Body extends StatelessWidget {
               ),
               BlocBuilder<BlocTask, TaskState>(
                 builder: (context, state) {
-                  return VerifikText.body(
+                  return R5Text.body(
                     label: state.model.isEdit
                         ? R5UiValues.editTask
                         : R5UiValues.newTask,
@@ -41,9 +41,9 @@ class Body extends StatelessWidget {
             ],
           ),
         ),
-        const Gap(VerifikSpacing.md),
+        const Gap(R5Spacing.md),
         Padding(
-          padding: const EdgeInsets.all(VerifikSpacing.md),
+          padding: const EdgeInsets.all(R5Spacing.md),
           child: FormTask(
             formKey: formKeyTask,
           ),

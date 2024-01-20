@@ -3,7 +3,7 @@ import 'package:r5/app/utils/colors.dart';
 
 class R5Checkbox extends StatelessWidget {
   const R5Checkbox({
-    this.activeColor = VerifikColors.primaryColor,
+    this.activeColor = R5Colors.primaryColor,
     this.disabled = false,
     Key? key,
     this.onChanged,
@@ -36,7 +36,7 @@ class R5Checkbox extends StatelessWidget {
             border: value
                 ? null
                 : Border.all(
-                    color: VerifikColors.disabledColor.withOpacity(0.50),
+                    color: R5Colors.disabledColor.withOpacity(0.50),
                   ),
           ),
           clipBehavior: Clip.hardEdge,

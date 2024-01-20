@@ -34,7 +34,7 @@ class FormLogin extends StatelessWidget {
                   );
             },
           ),
-          const Gap(VerifikSpacing.md),
+          const Gap(R5Spacing.md),
           BlocBuilder<BlocLogin, LoginState>(
             builder: (context, state) {
               final controllers = TextEditingController(
@@ -68,7 +68,7 @@ class FormLogin extends StatelessWidget {
               );
             },
           ),
-          const Gap(VerifikSpacing.md),
+          const Gap(R5Spacing.md),
         ],
       ),
     );

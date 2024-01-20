@@ -9,7 +9,7 @@ class SectionLogout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: VerifikSpacing.md),
+      padding: const EdgeInsets.symmetric(horizontal: R5Spacing.md),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -17,7 +17,7 @@ class SectionLogout extends StatelessWidget {
             onTap: onTap,
             child: Container(
               padding: const EdgeInsets.all(
-                VerifikSpacing.sl,
+                R5Spacing.sl,
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(

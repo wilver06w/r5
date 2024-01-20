@@ -70,7 +70,7 @@ class R5Typography {
   static const double medium = 12;
 
   ///Small = 10
-  static const double R5Small = 10;
+  static const double r5Small = 10;
 
   ///captionSmall = 12
   static const double captionSmall = 12;

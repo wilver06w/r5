@@ -12,21 +12,21 @@ class Body extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Gap(VerifikSpacing.md),
-        VerifikText.body(
+        const Gap(R5Spacing.md),
+        R5Text.body(
           label: R5UiValues.welcome,
           color: Colors.black,
           textStyle: GoogleFonts.lato(),
         ),
-        const Gap(VerifikSpacing.md),
+        const Gap(R5Spacing.md),
         SvgPicture.asset(
           R5UiValues.logor5,
           height: size.height * 0.1,
           width: size.width * 0.1,
         ),
-        const Gap(VerifikSpacing.md),
+        const Gap(R5Spacing.md),
         Padding(
-          padding: const EdgeInsets.all(VerifikSpacing.md),
+          padding: const EdgeInsets.all(R5Spacing.md),
           child: FormLogin(
             formKey: formKeyLogin,
           ),
@@ -36,7 +36,7 @@ class Body extends StatelessWidget {
             bool isFormValidate = state.model.isFormFilledLogin;
             return Button(
               title: R5UiValues.save,
-              backgroundColor: VerifikColors.primaryColor,
+              backgroundColor: R5Colors.primaryColor,
               onPressed: isFormValidate
                   ? () {
                       final formState = formKeyLogin.currentState;
@@ -46,7 +46,7 @@ class Body extends StatelessWidget {
                       } else {
                         showToast(
                           R5UiValues.completeTheData,
-                          backgroundColor: VerifikColors.rybBlue,
+                          backgroundColor: R5Colors.rybBlue,
                           textStyle: const TextStyle(
                             color: Colors.white,
                           ),
@@ -58,12 +58,12 @@ class Body extends StatelessWidget {
             );
           },
         ),
-        const Gap(VerifikSpacing.xxl),
+        const Gap(R5Spacing.xxl),
         InkWell(
           onTap: () {
             R5Route.navRegister();
           },
-          child: VerifikText.title(
+          child: R5Text.title(
             label: R5UiValues.register,
             textStyle: GoogleFonts.lato(),
           ),

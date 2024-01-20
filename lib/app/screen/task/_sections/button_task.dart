@@ -15,7 +15,7 @@ class ButtonTask extends StatelessWidget {
         bool isFormValidate = state.model.isFormFilledTask;
         return Button(
           title: state.model.isEdit ? R5UiValues.editTask : R5UiValues.save,
-          backgroundColor: VerifikColors.primaryColor,
+          backgroundColor: R5Colors.primaryColor,
           onPressed: isFormValidate
               ? () {
                   final formState = formKeyTask.currentState;
@@ -27,7 +27,7 @@ class ButtonTask extends StatelessWidget {
                   } else {
                     showToast(
                       R5UiValues.completeTheData,
-                      backgroundColor: VerifikColors.rybBlue,
+                      backgroundColor: R5Colors.rybBlue,
                       textStyle: const TextStyle(
                         color: Colors.white,
                       ),
