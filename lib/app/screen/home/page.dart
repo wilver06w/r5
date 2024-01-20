@@ -26,6 +26,7 @@ part 'package:r5/app/screen/home/_sections/container_time.dart';
 part 'package:r5/app/screen/home/_sections/builder_list.dart';
 part 'package:r5/app/screen/home/_sections/item_task.dart';
 part 'package:r5/app/screen/home/_sections/logout.dart';
+part 'package:r5/app/screen/home/_sections/list_types.dart';
 
 class Page extends StatelessWidget {
   const Page({super.key});

@@ -45,11 +45,6 @@ class Body extends StatelessWidget {
         const Gap(VerifikSpacing.md),
         BuilderList(
           refBd: refBd,
-          isCompleted: true,
-        ),
-        const Gap(VerifikSpacing.md),
-        BuilderList(
-          refBd: refBd,
         ),
       ],
     );
