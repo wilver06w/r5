@@ -20,7 +20,7 @@ class R5Route {
 
   static Future<Object?> navLogin() async {
     return Modular.to.pushNamedAndRemoveUntil(
-      '/auth/login',
+      '/auth/',
       (_) => false,
     );
   }

@@ -86,6 +86,7 @@ Future<void> _listener(BuildContext context, HomeState state) async {
       ),
     );
   } else if (state is LoadedLogoutState) {
+    Navigator.pop(context);
     R5Route.navLogin();
   } else if (state is ErrorLogoutState) {
     Navigator.pop(context);
