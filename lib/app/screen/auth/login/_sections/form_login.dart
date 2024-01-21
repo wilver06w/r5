@@ -1,4 +1,4 @@
-part of 'package:r5/app/screen/login/page.dart';
+part of 'package:r5/app/screen/auth/login/page.dart';
 
 class FormLogin extends StatelessWidget {
   const FormLogin({

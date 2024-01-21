@@ -4,13 +4,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:r5/app/screen/login/bloc/bloc.dart';
+import 'package:r5/app/screen/auth/register/bloc/bloc.dart';
 import 'package:r5/app/utils/colors.dart';
 import 'package:r5/app/utils/config/client_config.dart';
 import 'package:r5/app/utils/config/firebase_instance.dart';
 import 'package:r5/app/utils/http/http_client.dart' hide ModularWatchExtension;
 import 'package:r5/app/utils/input/input.dart';
-import 'package:r5/app/utils/preferences.dart';
+import 'package:r5/app/utils/navigation.dart';
 import 'package:r5/app/utils/r5_loading.dart';
 import 'package:r5/app/utils/r5_ui.dart';
 import 'package:r5/app/utils/spacing.dart';
@@ -18,11 +18,10 @@ import 'package:r5/app/utils/text/text.dart';
 import 'package:r5/app/utils/validations_inputs.dart';
 import 'package:r5/app/widget/button.dart';
 
-import '../../utils/navigation.dart';
 
-part 'package:r5/app/screen/login/_sections/body.dart';
-part 'package:r5/app/screen/login/_sections/bottom.dart';
-part 'package:r5/app/screen/login/_sections/form_login.dart';
+part 'package:r5/app/screen/auth/register/_sections/body.dart';
+part 'package:r5/app/screen/auth/register/_sections/bottom.dart';
+part 'package:r5/app/screen/auth/register/_sections/form_login.dart';
 
 class Page extends StatelessWidget {
   const Page({super.key});
@@ -30,12 +29,11 @@ class Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final app = Modular.get<AppConfig>();
-    return BlocProvider<BlocLogin>(
-      create: (context) => BlocLogin(
+    return BlocProvider<BlocRegister>(
+      create: (context) => BlocRegister(
         firebaseInstace: Modular.get<R5FirebaseInstance>(),
-        prefs: Modular.get<Preferences>(),
       ),
-      child: BlocListener<BlocLogin, LoginState>(
+      child: BlocListener<BlocRegister, RegisterState>(
         listener: _listener,
         child: Scaffold(
           backgroundColor: R5Colors.backgroundColor,
@@ -49,27 +47,21 @@ class Page extends StatelessWidget {
   }
 }
 
-Future<void> _listener(BuildContext context, LoginState state) async {
-  if (state is LoadingLoginState) {
+Future<void> _listener(BuildContext context, RegisterState state) async {
+  if (state is LoadingRegisterState) {
     R5Loading.show(context);
-  } else if (state is LoadedLoginState) {
+  } else if (state is LoadedRegisterState) {
     Navigator.pop(context);
-    if (!(state.model.userCredential?.user?.emailVerified ?? true)) {
-      state.model.userCredential?.user?.sendEmailVerification();
-      showToast(
-        R5UiValues.verifyEmail,
-        backgroundColor: R5Colors.rybBlue,
-        textStyle: const TextStyle(
-          color: Colors.white,
-        ),
-        duration: const Duration(
-          seconds: 7,
-        ),
-      );
-      return;
-    }
-    R5Route.navHome();
-  } else if (state is ErrorLoginState) {
+    showToast(
+      '${R5UiValues.userRegisterSuccesful}\n${R5UiValues.nowYouCanLogIn}',
+      backgroundColor: R5Colors.rybBlue,
+      textStyle: const TextStyle(
+        color: Colors.white,
+      ),
+      duration: const Duration(seconds: 10),
+    );
+    R5Route.navLogin();
+  } else if (state is ErrorRegisterState) {
     Navigator.pop(context);
     showToast(
       state.message,

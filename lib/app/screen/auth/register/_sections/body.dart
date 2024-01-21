@@ -1,4 +1,4 @@
-part of 'package:r5/app/screen/register/page.dart';
+part of 'package:r5/app/screen/auth/register/page.dart';
 
 class Body extends StatelessWidget {
   const Body({
