@@ -87,7 +87,7 @@ class BlocTask extends Bloc<TaskEvent, TaskState> {
         'tdescription': '',
       });
 
-      emit(LoadedSaveTaskState(state.model));
+      emit(LoadedEditTaskState(state.model));
     } on FirebaseException catch (error) {
       emit(
         ErrorSaveTaskState(

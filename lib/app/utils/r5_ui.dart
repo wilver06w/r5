@@ -22,6 +22,7 @@ class R5UiValues {
   static const String userRegisterSuccesful =
       'Usuario registrado correctamente.';
   static const String nowYouCanLogIn = 'Ahora puedes iniciar sesión.';
+  static const String sigIn = 'Iniciar sesión.';
   static const String nameTaskBd = 'user';
   static const String nameCollection = 'task';
   static const String deleteTaskSuccess = 'Eliminada tarea con exito';

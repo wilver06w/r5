@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart'
+    hide ModularWatchExtension;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,7 +10,6 @@ import 'package:r5/app/screen/auth/login/bloc/bloc.dart';
 import 'package:r5/app/utils/colors.dart';
 import 'package:r5/app/utils/config/client_config.dart';
 import 'package:r5/app/utils/config/firebase_instance.dart';
-import 'package:r5/app/utils/http/http_client.dart' hide ModularWatchExtension;
 import 'package:r5/app/utils/input/input.dart';
 import 'package:r5/app/utils/navigation.dart';
 import 'package:r5/app/utils/preferences.dart';

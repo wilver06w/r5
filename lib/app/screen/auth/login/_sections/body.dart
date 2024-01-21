@@ -35,7 +35,7 @@ class Body extends StatelessWidget {
           builder: (context, state) {
             bool isFormValidate = state.model.isFormFilledLogin;
             return Button(
-              title: R5UiValues.save,
+              title: R5UiValues.sigIn,
               backgroundColor: R5Colors.primaryColor,
               onPressed: isFormValidate
                   ? () {

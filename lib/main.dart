@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:r5/app/config/app.dart';
 import 'package:r5/app/module.dart';
-import 'package:r5/app/utils/http/http_client.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
