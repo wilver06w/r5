@@ -28,13 +28,6 @@ dependencies:
   url_launcher: ^6.2.2
 
   gap: ^3.0.1
-  octo_image: ^2.0.0
-  camera: ^0.10.5+9
-  image: ^4.0.17
-  image_picker: ^1.0.1
-  path_provider: ^2.0.15
-  path: ^1.8.3
-  image_picker_web: ^3.1.1
   oktoast: ^3.4.0
   percent_indicator: ^4.2.3
   device_info_plus: ^9.1.1
