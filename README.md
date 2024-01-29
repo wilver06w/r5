@@ -1,6 +1,5 @@
 # R5
 - v1.0.0
-- Este codigo esta compilado en esta url (https://wilver06w.github.io/)
 - Video probando su funcionalidad: (https://youtu.be/88cUPLk_34E)
 - Video socializando Infra: (https://youtu.be/-Ayk6cbX5w8)
 
